@@ -1,6 +1,9 @@
 \documentclass[11pt, oneside]{article}
 \usepackage[letterpaper, margin=2cm]{geometry}
 \usepackage{MATH565}
+\usepackage{xspace}
+\newcommand{\MATLAB}{\textsc{Matlab}\xspace}
+\newcommand{\PYTHON}{\textsc{Python}\xspace}
 
 \begin{document}
 \noindent \textbf{\Large{Caleb Logemann \\
@@ -8,29 +11,99 @@ MATH 565 Continuous Optimization \\
 Homework 1
 }}
 
+%\lstinputlisting[language=Python]{H01_23.m}
 \begin{enumerate}
   \item % #1
-    Problem 1
+    Problem 1 \\
+    Compute the gradient $\nabla f(x)$ and Hessian $\nabla^2 f(x)$ of the
+    Rosenbrock function
+    \[
+      f(x) = 100(x_2 - x_1^2)^2 + (1 - x_1)^2
+    \]
 
   \item % #2
-    Problem 8
+    Problem 8 \\
+    Suppose that $f$ is a convex function.
+    Show that the set of global minimizers of $f$ is a convex set.
+
+    \begin{proof}
+      Let $f$ be a convex function.
+      This implies that 
+    \end{proof}
 
   \item % #3
-    Problem 9
+    Problem 9 \\
+    Consider the function $f(x_1, x_2) = (x_1 + x_2^2)^2$.
+    At the point $x^T = (1, 0)$ we consider the search direction $p^T = (-1, 1)$.
+    Show that $p$ is a descent direction and find all minimizers of the problem
+    (2.10).
 
   \item % #4
-    Problem 13
+    Problem 13 \\
+    Show that the sequence $x_k = 1/k$ is not Q-linearly convergent,
+    though it does converge to zero.
 
   \item % #5
-    Problem 14
+    Problem 14 \\
+    Show that the sequence $x_k = 1 + (0.5)^{2^k}$ is Q-quadractically convergent
+    to 1.
 
   \item % #6
+    Consider the following fixed point iteration scheme:
+    \[
+      x_{k+1} = x_k - \frac{\br{g(x_k)}^2}{g(x_k + g(x_k)) - g(x_k)}
+    \]
+    Prove that if this method is converges to a root $x^*$ of $g(x)$ such that
+    $g'(x^*)\neq 0$ and $g''(x^*) \neq 0$, then the rate of convergence is
+    quadractic: $p = 2$.
 
-  \item % #7
+    \begin{proof}
+      
+    \end{proof}
+
+  \item % #7 Done
+    Implement the method from problem 6 in \MATLAB (or \PYTHON if you prefer).
+    Use it to solve problems 8 and 9.
+
+    The following function implements the method from problem 6.
+    \lstinputlisting[language=Python]{01_7.py}
 
   \item % #8
+    The van der Waal equation
+    \[
+      \p{P + \frac{a}{V^2}}\p{V - b} = nRT
+    \]
+    generalizes the ideal gas law $PV = nRT$.
+    In each equation, $P$ represents the pressure (atm), $V$ represents the volume
+    (liters), $n$ is the number of moles of gas, and $T$ represents the temperature
+    (K).
+    $R$ is the universal gas constant and has the value
+    \[
+      R = 0.08205 \frac{\text{liters} \cdot \text{atm}}{\text{mole}\cdot \text{K}}
+    \]
+    Determine the volume of 1 mole of isobutane at a temperature of $T = 313 K$ and
+    a pressure of $P = 2$ atm, given that, for isobutane,
+    $a = 12.87 \text{atm} \cdot \text{liters}^2$ and $b = 0.1142$ liters.
+    Compare this to the value predicted from the ideal gas law.
+    You may use any one of your methods (make clear in your writeup which one
+    you are using, what initial guesses or intervals you are using, etc...).
+
+    The following script uses the method implemented in problem 7 to find the
+    volume that satisfies the van der Waal equation.
+    \lstinputlisting[language=Python]{01_8.py}
 
   \item % #9
+    According to Archimedes’ law, when a solid of density σ is placed in a
+    liquid of density $\rho$, it will sink to a depth $h$ that displaces an
+    amount of liquid whose weight equals the weight of the solid.
+    For a sphere of radius $r$, Archimedes law is
+    \[
+      \frac{1}{3} \pi \p{3rh^2 - h^3}\rho = \frac{4}{3}\pi r^3 \sigma
+    \]
+    Given $r = 5$, $\rho = 1$, and $\sigma = 0.6$, determine $h$.
+    You may use any one of your methods (make clear in your writeup which one
+    you are using, what initial guesses or intervals you are using, etc...).
+    \lstinputlisting[language=Python]{01_9.py}
 
 \end{enumerate}
 \end{document}
