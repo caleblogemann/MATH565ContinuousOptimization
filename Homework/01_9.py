@@ -11,9 +11,15 @@ h0 = 5.67
 TOL = 1e-10
 MaxIter = 1000
 
-sol = problem7(g, h0, TOL, MaxIter)
-print 'The depth of the sphere is {0:.10f}'.format(sol[-1])
+h0 = 5.67
+sol1 = problem7(g, h0, TOL, MaxIter)
+h0 = -4
+sol2 = problem7(g, h0, TOL, MaxIter)
+h0 = 13
+sol3 = problem7(g, h0, TOL, MaxIter)
 
-x = np.linspace(1,10,10000)
-plt.plot(x, g(x), '-', sol[-1], g(sol[-1]), 'o')
+print 'The possible depths of the sphere are {0:.10f}, {1:.10f}, and {2:.10f}'.format(sol1[-1], sol2[-1], sol3[-1])
+
+x = np.linspace(-5,15,10000)
+plt.plot(x, g(x), '-', [sol1[-1], sol2[-1], sol3[-1]], [g(sol1[-1]), g(sol2[-1]), g(sol3[-1])], 'o')
 
