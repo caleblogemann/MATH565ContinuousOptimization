@@ -13,22 +13,89 @@ Homework 1
 
 %\lstinputlisting[language=Python]{H01_23.m}
 \begin{enumerate}
-  \item % #1
+  \item % #1 Done
     Problem 1 \\
     Compute the gradient $\nabla f(x)$ and Hessian $\nabla^2 f(x)$ of the
     Rosenbrock function
     \[
-      f(x) = 100(x_2 - x_1^2)^2 + (1 - x_1)^2
+      f(x) = 100\p{x_2 - x_1^2}^2 + (1 - x_1)^2
     \]
 
-  \item % #2
+    The gradient of $f$ is defined as $\p{\pd{f}{x_1}, \pd{f}{x_2}}^T$.
+    The first derivatives of $f$ are stated below.
+    \begin{align*}
+      \pd{f}{x_1} &= -400 x_1 \p{x_2 - x_1^2} - 2(1 - x_1) \\
+      \pd{f}{x_2} &= 200\p{x_2 - x_1^2}
+    \end{align*}
+    So the gradient of $f$ is 
+    \[
+      \nabla f(x) =
+      \begin{bmatrix}
+        -400 x_1 \p{x_2 - x_1^2} - 2(1 - x_1) \\
+        200\p{x_2 - x_1^2}
+      \end{bmatrix}
+    \]
+    The Hessian of $f$ is the matrix
+    \[
+      \nabla^2 f(x) =
+      \begin{bmatrix}
+        \pd[2]{f}{x_1} & \mpd[2]{f}{\partial x_1 \partial x_2} \\
+        \mpd[2]{f}{\partial x_2 \partial x_1} & \pd[2]{f}{x_2}
+      \end{bmatrix}
+    \]
+    The second derivatives are shown below.
+    \begin{align*}
+      \pd[2]{f}{x_1} &= \pda{}{x_1}{\pd{f}{x_1}} \\
+      &= -400\p{x_2 - x_1^2} + 800 x_1^2 + 2 \\
+      &= -400\p{x_2 - 3x_1^2} + 2 \\
+      \mpd[2]{f}{\partial x_1 \partial x_2} &= \pda{}{x_1}{\pd{f}{x_2}} \\
+      &= -400 x_1 \\
+      \pd[2]{f}{x_2} &= \pda{}{x_2}{\pd{f}{x_2}} \\
+      &= 200
+    \end{align*}
+    Note that $\mpd[2]{f}{\partial x_2 \partial x_1} = \mpd[2]{f}{\partial x_1 \partial x_2}$
+    as $f$ has continuous second derivatives.
+    Thus the Hessian of $f$ is 
+    \[
+      \nabla^2 f(x) =
+      \begin{bmatrix}
+         -400\p{x_2 - 3x_1^2} + 2 & -400x_1 \\
+        -400x_1 & 200
+      \end{bmatrix}
+    \]
+
+  \item % #2 Done
     Problem 8 \\
     Suppose that $f$ is a convex function.
     Show that the set of global minimizers of $f$ is a convex set.
 
     \begin{proof}
       Let $f$ be a convex function.
-      This implies that 
+      This implies that
+      \[
+        f(\lambda x + (1 - \lambda) y) \le \lambda f(x) + (1 - \lambda) f(y)
+      \]
+      for $\lambda \in \br{0, 1}$ and $x, y \in \RR^n$.
+      Let $S = \set{x^* \in \RR^n : f(x^*) \le f(x) \forall x \in \RR^n}$ be
+      the set of all global minimizers.
+      Let $x_1^*, x_2^* \in S$ and let $\lambda \in \br{0, 1}$.
+      Note that $f(x_1^*) = f(x_2^*)$ because in order for both of these to be
+      global minimizers they must have the same functional value.
+      Now consider the point $\lambda x_1^* + (1-\lambda)x_2^*$.
+      Since $f$ is convex.
+      \begin{align*}
+        f(\lambda x_1^* + (1-\lambda)x_2^*) &\le \lambda f(x_1^*) + (1 - \lambda) f(x_2^*) \\
+        &= \lambda f(x_1^*) + (1 - \lambda) f(x_1^*) \\
+        &= f(x_1^*) \\
+      \end{align*}
+      This shows tha
+      Also since $x_1^*$ is a global minimizer.
+      \[
+        f(\lambda x_1^* + (1-\lambda)x_2^*) \le f(x_1^*) \le f(x)
+      \]
+      for any $x \in \RR^n$.
+      Thus $\lambda x_1^* + (1 - \lambda)x_2^* \in S$ and is a global minimizer.
+      This shows that $S$ is convex.
     \end{proof}
 
   \item % #3
@@ -37,6 +104,7 @@ Homework 1
     At the point $x^T = (1, 0)$ we consider the search direction $p^T = (-1, 1)$.
     Show that $p$ is a descent direction and find all minimizers of the problem
     (2.10).
+
 
   \item % #4
     Problem 13 \\
