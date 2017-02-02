@@ -199,7 +199,7 @@ Homework 1
     \begin{proof}
       First note the following two Taylor series for $g(x_k)$ and $g(x_k + g(x_k)$.
       \begin{align*}
-        g(x_k) &= g(x^*) + (x_k - x^*)g'(x_k) + \frac{1}{2}(x_k - x^*)^2g''(\xi_1) \\
+        g(x_k) &= g(x^*) + (x_k - x^*)g'(x^*) + \frac{1}{2}(x_k - x^*)^2g''(\xi_1) \\
         g(x_k + g(x_k)) &= g(x_k) + g(x_k)g'(\xi_2)
       \end{align*}
       where $\xi_1 \in (x_k, x^*)$ and $\xi_2 \in (x_k, x_k + g(x_k))$.
@@ -212,28 +212,33 @@ Homework 1
         x_{k+1} - x^* &= x_k - x^* - \frac{\br{g(x_k)}^2}{g(x_k)g'(\xi_2)} \\
         x_{k+1} - x^* &= x_k - x^* - \frac{g(x_k)}{g'(\xi_2)}
         \intertext{Now use the Taylor expansion of $g(x_k)$.}
-        x_{k+1} - x^* &= x_k - x^* - \frac{g(x^*) + (x_k - x^*)g'(x_k) + \frac{1}{2}(x_k - x^*)^2g''(\xi_1)}{g'(\xi_2)} \\
-        x_{k+1} - x^* &= x_k - x^* - \frac{(x_k - x^*)g'(x_k) + \frac{1}{2}(x_k - x^*)^2g''(\xi_1)}{g'(\xi_2)} \\
-        x_{k+1} - x^* &= x_k - x^* - \frac{(x_k - x^*)g'(x_k)}{g'(\xi_2)} - \frac{\frac{1}{2}(x_k - x^*)^2g''(\xi_1)}{g'(\xi_2)} \\
-        x_{k+1} - x^* &= \p{x_k - x^*}\p{1 - \frac{g'(x_k)}{g'(\xi_2)}} - \frac{\frac{1}{2}(x_k - x^*)^2g''(\xi_1)}{g'(\xi_2)}
+        x_{k+1} - x^* &= x_k - x^* - \frac{g(x^*) + (x_k - x^*)g'(x^*) + \frac{1}{2}(x_k - x^*)^2g''(\xi_1)}{g'(\xi_2)} \\
+        x_{k+1} - x^* &= x_k - x^* - \frac{(x_k - x^*)g'(x^*) + \frac{1}{2}(x_k - x^*)^2g''(\xi_1)}{g'(\xi_2)} \\
+        x_{k+1} - x^* &= x_k - x^* - \frac{(x_k - x^*)g'(x^*)}{g'(\xi_2)} - \frac{\frac{1}{2}(x_k - x^*)^2g''(\xi_1)}{g'(\xi_2)} \\
+        x_{k+1} - x^* &= \p{x_k - x^*}\p{1 - \frac{g'(x^*)}{g'(\xi_2)}} - \frac{\frac{1}{2}(x_k - x^*)^2g''(\xi_1)}{g'(\xi_2)} \\
+        \frac{x_{k+1} - x^*}{\p{x_k - x^*}^2} &= \frac{1}{x_k - x^*}\p{1 - \frac{g'(x^*)}{g'(\xi_2)}} - \frac{g''(\xi_1)}{2g'(\xi_2)}
         \intertext{Note that as $k \to \infty$, $g(x_k) \to 0$ since this method is convergent.
-          This also implies that $\xi_2 \to x_k$, therefore}
-        \lim[k \to \infty]{\frac{\abs{x_{k+1} - x^*}}{\abs{x_{k}-x^*}}^2} &= \p{x_k - x^*}\p{1 - \frac{g'(x_k)}{g'(\xi_2)}} - \frac{\frac{1}{2}(x_k - x^*)^2g''(\xi_1)}{g'(\xi_2)}
+          This also implies that $\xi_2 \to x^*$ and $\xi_1 \to x^*$, therefore}
+        \lim[k \to \infty]{\frac{\abs{x_{k+1} - x^*}}{\abs{x_{k}-x^*}^2}} &= \lim[k \to \infty]{\abs{\frac{1}{x_k - x^*}\p{1 - \frac{g'(x_k)}{g'(\xi_2)}} - \frac{g''(\xi_1)}{2g'(\xi_2)}}} \\
+        \intertext{Note that since this iteration scheme converges $\frac{g'(x^*)}{g'(\xi_2)} \to 1$ faster than $x_k - x^* \to 0$, so}
+        \lim[k \to \infty]{\frac{\abs{x_{k+1} - x^*}}{\abs{x_{k}-x^*}^2}} &= \lim[k \to \infty]{\frac{g''(\xi_1)}{2g'(\xi_2)}} \\
+        \lim[k \to \infty]{\frac{\abs{x_{k+1} - x^*}}{\abs{x_{k}-x^*}^2}} &= \frac{g''(x^*)}{2g'(x^*)} \\
       \end{align*}
-      \begin{align*}
-        \intertext{Now use the Taylor series for $g(x_k + g(x_k))$.}
-        x_{k+1} - x^* &= x_k - x^* - \frac{\br{g(x_k)}^2}{g(x_k) + g(x_k)g'(x_k) + g(x_k)^2g''(\xi_2)- g(x_k)} \\
-        x_{k+1} - x^* &= x_k - x^* - \frac{\br{g(x_k)}^2}{g(x_k)g'(x_k) + g(x_k)^2g''(\xi_2)} \\
-        x_{k+1} - x^* &= x_k - x^* - \frac{g(x_k)}{g'(x_k) + g(x_k)g''(\xi_2)}
-        \intertext{Now use the Taylor expansion of $g(x_k)$.}
-        x_{k+1} - x^* &= x_k - x^* - \frac{g(x^*) + (x_k - x^*)g'(x_k) + \frac{1}{2}(x_k - x^*)^2g''(\xi_1)}{g'(x_k) + g(x_k)g''(\xi_2)} \\
-        x_{k+1} - x^* &= x_k - x^* - \frac{(x_k - x^*)g'(x_k) + \frac{1}{2}(x_k - x^*)^2g''(\xi_1)}{g'(x_k) + g(x_k)g''(\xi_2)} \\
-        x_{k+1} - x^* &= x_k - x^* - \frac{(x_k - x^*)g'(x_k)}{g'(\xi_2)} - \frac{\frac{1}{2}(x_k - x^*)^2g''(\xi_1)}{g'(x_k) + g(x_k)g''(\xi_2)} \\
-        x_{k+1} - x^* &= \p{x_k - x^*}\p{1 - \frac{g'(x_k)}{g'(x_k) + g(x_k)g''(\xi_2)}} - \frac{\frac{1}{2}(x_k - x^*)^2g''(\xi_1)}{g'(x_k) + g(x_k)g''(\xi_2)}
-        \intertext{Note that as $k \to \infty$, $g(x_k) \to 0$ since this method is convergent.
-          This also implies that $\xi_2 \to x_k$, therefore}
-        \lim[k \to \infty]{\frac{\abs{x_{k+1} - x^*}}{\abs{x_{k}-x^*}}^2} &= \p{x_k - x^*}\p{1 - \frac{g'(x_k)}{g'(\xi_2)}} - \frac{\frac{1}{2}(x_k - x^*)^2g''(\xi_1)}{g'(\xi_2)}
-      \end{align*}
+      Thus this iteration scheme is Q-quadractically convergent.
+      %\begin{align*}
+        %\intertext{Now use the Taylor series for $g(x_k + g(x_k))$.}
+        %x_{k+1} - x^* &= x_k - x^* - \frac{\br{g(x_k)}^2}{g(x_k) + g(x_k)g'(x_k) + g(x_k)^2g''(\xi_2)- g(x_k)} \\
+        %x_{k+1} - x^* &= x_k - x^* - \frac{\br{g(x_k)}^2}{g(x_k)g'(x_k) + g(x_k)^2g''(\xi_2)} \\
+        %x_{k+1} - x^* &= x_k - x^* - \frac{g(x_k)}{g'(x_k) + g(x_k)g''(\xi_2)}
+        %\intertext{Now use the Taylor expansion of $g(x_k)$.}
+        %x_{k+1} - x^* &= x_k - x^* - \frac{g(x^*) + (x_k - x^*)g'(x_k) + \frac{1}{2}(x_k - x^*)^2g''(\xi_1)}{g'(x_k) + g(x_k)g''(\xi_2)} \\
+        %x_{k+1} - x^* &= x_k - x^* - \frac{(x_k - x^*)g'(x_k) + \frac{1}{2}(x_k - x^*)^2g''(\xi_1)}{g'(x_k) + g(x_k)g''(\xi_2)} \\
+        %x_{k+1} - x^* &= x_k - x^* - \frac{(x_k - x^*)g'(x_k)}{g'(\xi_2)} - \frac{\frac{1}{2}(x_k - x^*)^2g''(\xi_1)}{g'(x_k) + g(x_k)g''(\xi_2)} \\
+        %x_{k+1} - x^* &= \p{x_k - x^*}\p{1 - \frac{g'(x_k)}{g'(x_k) + g(x_k)g''(\xi_2)}} - \frac{\frac{1}{2}(x_k - x^*)^2g''(\xi_1)}{g'(x_k) + g(x_k)g''(\xi_2)}
+        %\intertext{Note that as $k \to \infty$, $g(x_k) \to 0$ since this method is convergent.
+          %This also implies that $\xi_2 \to x_k$, therefore}
+        %\lim[k \to \infty]{\frac{\abs{x_{k+1} - x^*}}{\abs{x_{k}-x^*}}^2} &= \p{x_k - x^*}\p{1 - \frac{g'(x_k)}{g'(\xi_2)}} - \frac{\frac{1}{2}(x_k - x^*)^2g''(\xi_1)}{g'(\xi_2)}
+      %\end{align*}
     \end{proof}
 
   \item % #7 Done
@@ -276,6 +281,11 @@ liters
     \begin{center}
       \includegraphics[scale=1]{Figures/01_1.png}
     \end{center}
+
+    Note that the ideal gas law states that
+    $V = \frac{nRT}{P} = \frac{0.08205 \times 313}{2} = 12.840825$ liters.
+    This is very close to the first possible volume that satisfies the van der
+    Waal equation, $12.442597$ liters.
 
   \item % #9 Done
     According to Archimedes' law, when a solid of density $\sigma$ is placed in a
