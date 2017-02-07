@@ -5,9 +5,16 @@
 \RequirePackage{Derivative}
 \RequirePackage{SetTheory}
 \RequirePackage{Limit}
+\RequirePackage{mcode}
 \RequirePackage{listings}
 \lstset{
     frame=single,
     breaklines=true,
     postbreak=\raisebox{0ex}[0ex][0ex]{\ensuremath{\hookrightarrow\space}}
 }
+\RequirePackage{xspace}
+\newcommand{\MATLAB}{\textsc{Matlab}\xspace}
+\newcommand{\PYTHON}{\textsc{Python}\xspace}
+
+\renewcommand{\v}[1]{\underline{#1}}
+\newcommand{\M}[1]{\underline{\underline{#1}}}

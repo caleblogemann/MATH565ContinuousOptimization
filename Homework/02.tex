@@ -1,0 +1,93 @@
+\documentclass[11pt, oneside]{article}
+\usepackage[letterpaper, margin=2cm]{geometry}
+\usepackage{MATH565}
+
+\begin{document}
+\noindent \textbf{\Large{Caleb Logemann \\
+MATH 565 Continuous Optimization \\
+Homework 1
+}}
+
+%\lstinputlisting[language=Python]{H01_23.m}
+\begin{enumerate}
+  \item % #1
+    Problem 6 \\
+    Consider the steepest descent method with exact linear searches applied to
+    the convex quadractic function (3.24).
+    Using the properties given in this chapter, show that if the initial point
+    is such that $x_0 - x^*$ is parallel to an eigenvector of $Q$, then the
+    steepest descent method will find the solution in one step.
+
+  \item % #2
+    Problem 8 \\
+    Let $Q$ be a postive definite symmetric matrix.
+    Prove that for any vector $\v{X}$, we have
+    \[
+      \frac{\p{\v{x}^T\v{x}}^2}{\p{\v{x}^T \M{Q} \v{x}}\p{\v{x}^T \M{Q}^{-1} \v{x}}}
+      \ge \frac{4\lambda_n \lambda_1}{\p{\lambda_n + \lambda_1}^2}
+    \]
+    where $\lambda_n$ and $\lambda_1$ are, respectively, the largest and
+    smallest eigenvalues of $\M{Q}$.
+    (This relation, which is known as the Kantorovich inequality, can be used to
+    deduce (3.29) from (3.28).)
+
+    \begin{proof}
+      
+    \end{proof}
+
+  \item % #3
+    Problem 12 \\
+
+  \item % #4
+    For the quadractic function
+    \[
+      f(\v{x}) = \frac{1}{2} \v{x}^T \M{B} \v{x} - \v{x}^T \v{b}
+    \]
+    where $\M{B} \in \RR^{n \times n}$ is symmetric positive definite, show that the
+    Newton search direction with $\alpha = 1$ satisfies the sufficient
+    decrease assumption (3.4) for any $c_1 \le \frac{1}{2}$ and the curvature
+    conditions (3.5) for any $c_2 > 0$.
+
+  \item % #5
+    Consider the function:
+    \[
+      f(\v{x}) = 20(x_2 - x_1^2)^2 + (1 - x_1)^2
+    \]
+    Write a \MATLAB steepest descent code to find the minimizer of this function.
+    The function be in the form
+    \begin{lstlisting}[language=MATLAB, frame=none]
+      xstar = SteepestDescent(f, x0, TOL, MaxIters)
+    \end{lstlisting}
+    Use $\v{x_0} = (1.2, 1.2)^T$.
+    Use an exact line search to find $\alpha$.
+    You can use your $1D$ rootfinding code from Homework 1 to compute the exact
+    line search solution $\alpha$.
+    Plot the contour lines of $f$ and superimport the various guesses (each
+    connected to the next via a line segment) made by the steepest descent
+    algorithm.
+    Produce a table of your approximations and the errors (if there are many
+    iterations, you can just show the first 10 iterations and the last 10
+    iterations).
+
+  \item % #6
+    Consider the function:
+    \[
+      f(\v{x}) = 20(x_2 - x_1^2)^2 + (1 - x_1)^2
+    \]
+    Write a \MATLAB Newton descent code to find the minimizer of this function.
+    The function be in the form
+    \begin{lstlisting}[language=MATLAB, frame=none]
+      xstar = NewtonDescent(f, x0, TOL, MaxIters)
+    \end{lstlisting}
+    Use $\v{x_0} = (1.2, 1.2)^T$.
+    Use $\alpha = 1$.
+    Use the backslash operator to invert the appropriate matrices.
+    Plot the contour lines of $f$ and superimport the various guesses (each
+    connected to the next via a line segment) made by the Newton descent
+    algorithm.
+    Produce a table of your approximations and the errors (if there are many
+    iterations, you can just show the first 10 iterations and the last 10
+    iterations).
+
+\end{enumerate}
+\end{document}
