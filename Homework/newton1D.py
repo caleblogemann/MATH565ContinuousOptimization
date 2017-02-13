@@ -14,5 +14,4 @@ def newton1D(g, gd, x0, TOL, MaxIter):
         gx = g(x[nIter])
         if abs(gx) < TOL and abs(delta) < TOL:
             mstop = 0
-    x = x[:nIter + 1]
-    return x
+    return x[:nIter + 1]
