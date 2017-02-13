@@ -26,6 +26,7 @@ def plotResults(f, sol, title):
     plt.show()
 
 import numpy as np
+import matplotlib.pyplot as plt
 def newtonMultiD(f, gradf, hessianf, x0, TOL, MaxIter):
     x = np.zeros([MaxIter+1, x0.size])
     x[0] = x0

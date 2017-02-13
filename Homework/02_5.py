@@ -1,6 +1,6 @@
 import numpy as np
-import newtonsMethod
 import matplotlib.pyplot as plt
+execfile('newton1d.py')
 def steepestDescent(f, gradf, phid, phidd, x0, TOL, MaxIter):
     x = np.zeros([MaxIter+1, x0.size])
     x[0] = x0
