@@ -18,6 +18,79 @@ Homework 1
     is such that $x_0 - x^*$ is parallel to an eigenvector of $Q$, then the
     steepest descent method will find the solution in one step.
 
+    \begin{proof}
+      We are considering applying the steepest descent method to the function
+      \[
+        f(\v{x}) = \frac{1}{2} \v{x}^T\M{Q}\v{x} - \v{b}^T \v{x}.
+      \]
+      Also the initial point $\v{x}_0$ satisfies $\v{x}_0 - \v{x}^*$ being parallel to an
+      eigenvector of $\M{Q}$.
+      This implies that $\v{x}_0 - \v{x}^*$ is an eigenvector of $Q$, so let
+      $\lambda$ denote the eigenvalue associated with this eigenvector.
+
+      The steepest descent method uses the following search direction
+      \[
+        p_0 = -\nabla f(x_0)
+      \]
+      Since
+      \[
+        \nabla f(x) = \M{Q} \v{x} - \v{b}
+      \]
+      the initial search direction will be
+      \[
+        p_0 = -\p{\M{Q}\v{x}_0 - \v{b}}
+      \]
+      This can be simplified by noticing that $x^*$ the minimizer of $f$ is the
+      point that satisfies $\nabla f(x^*) = 0$ because $f$ is convex.
+      This can be solved as follows.
+      \begin{align*}
+        \nabla f(x^*) &= 0 \\
+        \M{Q}\v{x}^* - \v{b} &= 0 \\
+        \M{Q}\v{x}^* &= \v{b} \\
+        \v{x}^* &= \M{Q}^{-1}\v{b}
+      \end{align*}
+      The inverse of $\M{Q}$ exists because $Q$ is symmetric positive definite.
+      Using this we can simplify $p_0$.
+      \begin{align*}
+        \v{p}_0 &= -\p{\M{Q}\v{x}_0 - \v{b}} \\
+        \v{p}_0 &= -\p{\M{Q}\v{x}_0 - \M{Q}\M{Q}^{-1}\v{b}} \\
+        \v{p}_0 &= -\M{Q}\p{\v{x}_0 - \M{Q}^{-1}\v{b}} \\
+        \v{p}_0 &= -\M{Q}\p{\v{x}_0 - \v{x}^*}
+        \intertext{Since $\v{x}_0 - \v{x}^*$ is an eigenvector of $Q$.}
+        \v{p}_0 &= -\lambda\p{\v{x}_0 - \v{x}^*}
+      \end{align*}
+
+      Now that the search direction has been specified the step size must be
+      determined.
+      When using an exact line search the solution of the following minimization
+      problem must be determined.
+      \[
+        \min[\alpha > 0]{f(\v{x}_0 + \alpha \v{p}_0)} = \min[\alpha > 0]{\phi(\alpha)}
+      \]
+      The function $\phi(\alpha)$ can be simplified as follows.
+      \begin{align*}
+        \phi(\alpha) &= f(x_0 + \alpha p_0) \\
+        &= \frac{1}{2}\p{\v{x}_0 + \alpha \v{p}_0}^T \M{Q} \p{\v{x}_0 + \alpha \v{p}_0} - \v{b}^T \p{\v{x}_0 + \alpha \v{p}_0} \\
+        &= \frac{1}{2}\p{\v{x}_0^T \M{Q} \v{x}_0 + \alpha \v{x}_0^T \M{Q} \v{p}_0 + \alpha \v{p}_0^T \M{Q} \v{x}_0 + \alpha^2 \v{p}_0^T \M{Q} \v{p}_0} - \v{b}^T \v{x}_0 - \alpha \v{b}^T \v{p}_0
+        \intertext{Since $\M{Q}$ is symmetric}
+        &= \frac{1}{2}\p{\v{x}_0^T \M{Q} \v{x}_0 + 2 \alpha \v{x}_0^T \M{Q} \v{p}_0 + \alpha^2 \v{p}_0^T \M{Q} \v{p}_0} - \v{b}^T \v{x}_0 - \alpha \v{b}^T \v{p}_0 \\
+        &= \p{\frac{1}{2} \v{p}_0^T \M{Q} \v{p}_0} \alpha^2 + \p{\v{x}_0^T \M{Q} \v{p}_0 - \v{b}^T \v{p}_0} \alpha + \v{x}_0^T \M{Q} \v{x}_0 - \v{b}^T \v{x}_0
+      \end{align*}
+      In order to minimize this function we must differentiate with respect to
+      $\alpha$ and set equal to zero.
+      \begin{align*}
+        \phi'(\alpha) &= \v{p}_0^T \M{Q} \v{p}_0 \alpha + \p{\v{x}_0^T \M{Q} \v{p}_0 - \v{b}^T \v{p}_0} \\
+        0 &= \v{p}_0^T \M{Q} \v{p}_0 \alpha + \p{\v{x}_0^T \M{Q} \v{p}_0 - \v{b}^T \v{p}_0} \\
+        \alpha &= \frac{\v{b}^T \v{p}_0 - \v{x}_0^T \M{Q} \v{p}_0}{\v{p}_0^T \M{Q} \v{p}_0}
+        \intertext{This can be simplified by plugging in the value of $\v{p}_0$}
+        \alpha &= \frac{\lambda \v{b}^T\p{\v{x}_0 - \v{x}^*} - \lambda \v{x}_0^T \M{Q} \p{\v{x}_0 - \v{x}^*}}{\lambda^2 \p{\v{x}_0 - \v{x}^*}^T\M{Q} \p{\v{x}_0 - \v{x}^*}}
+        \intertext{Since $\v{x}_0 - \v{x}^*$ is an eigenvector of $\M{Q}$.}
+        \alpha &= \frac{\lambda \v{b}^T\p{\v{x}_0 - \v{x}^*} - \lambda^2 \v{x}_0^T \p{\v{x}_0 - \v{x}^*}}{\lambda^3 \p{\v{x}_0 - \v{x}^*}^T\p{\v{x}_0 - \v{x}^*}} \\
+        \alpha &= \frac{\lambda \v{b}^T\p{\v{x}_0 - \v{x}^*} - \lambda^2 \v{x}_0^T \p{\v{x}_0 - \v{x}^*}}{\lambda^3 \norm{\v{x}_0 - \v{x}^*}^2}
+      \end{align*}
+
+    \end{proof}
+
   \item % #2
     Problem 8 \\
     Let $Q$ be a postive definite symmetric matrix.
@@ -35,8 +108,94 @@ Homework 1
       
     \end{proof}
 
-  \item % #3
+  \item % #3 Done
     Problem 12 \\
+    Consider a block diagonal matrix $\M{B}$ with $1 \times 1$ and $2 \times 2$
+    blocks.
+    Show that the eigenvalues and eigenvectors can be obtained by computing the
+    spectral decomposition of each block separately.
+
+    \begin{proof}
+      Let $\M{B}$ be block diagonal and let $\M{B}_k$ be the blocks along the diagonal.
+      Let $n$ be the total number of blocks.
+      Each block can be written as its spectral decomposition, that is
+      \[
+        \M{B}_k = \M{Q}_k \M{\Lambda}_k \M{Q}_k^{-1}
+      \]
+      where $\Lambda_k$ is a diagonal matrix of the eigenvalues of $B_k$ and
+      $\M{Q}_k$ and $\M{Q}_k^{-1}$ are the left and right eigenvectors
+      respectively.
+      Using these spectral decompositions we can create the spectral
+      decomposition of $\M{B}$.
+      Let $\M{\Lambda}$ be a block diagonal matrix of all the $\M{\Lambda}_k$
+      matrices.
+      Note that since the $\M{\Lambda}_k's$ are diagonal this means that
+      $\M{\Lambda}$ will be diagonal not just block diagonal.
+      Also let $\M{Q}$ be a block diagonal matrix of the $\M{Q}_k$ matrices.
+      If this is the case then $\M{Q}^{-1}$ will be a block diagonal matrix
+      of the matrices $\M{Q}_k^{-1}$.
+      Visually these matrices are
+      \begin{align*}
+        \M{\Lambda} &=
+        \begin{bmatrix}
+          \M{\Lambda}_1 & & & \\
+          & \M{\Lambda}_2 & & \\
+          & & \ddots & \\
+          & & & \M{\Lambda}_n \\
+        \end{bmatrix} \\
+        \M{Q} &=
+        \begin{bmatrix}
+          \M{Q}_1 & & & \\
+          & \M{Q}_2 & & \\
+          & & \ddots & \\
+          & & & \M{Q}_n \\
+        \end{bmatrix} \\
+      \end{align*}
+      To verify that $\M{B} = \M{Q} \M{\Lambda} \M{Q}^{-1}$ is indeed the
+      spectral decomposition of $\M{B}$ will multiply these three matrices out.
+      \begin{align*}
+        \M{Q} \M{\Lambda} \M{Q}^{-1} &= 
+        \begin{bmatrix}
+          \M{Q}_1 & & & \\
+          & \M{Q}_2 & & \\
+          & & \ddots & \\
+          & & & \M{Q}_n
+        \end{bmatrix}
+        \begin{bmatrix}
+          \M{\Lambda}_1 & & & \\
+          & \M{\Lambda}_2 & & \\
+          & & \ddots & \\
+          & & & \M{\Lambda}_n
+        \end{bmatrix}
+        \begin{bmatrix}
+          \M{Q}_1^{-1} & & & \\
+          & \M{Q}_2^{-1} & & \\
+          & & \ddots & \\
+          & & & \M{Q}_n^{-1}
+        \end{bmatrix} \\
+        &=
+        \begin{bmatrix}
+          \M{Q}_1 \M{\Lambda}_1 \M{Q}_1^{-1}& & & \\
+          & \M{Q}_2 \M{\Lambda}_2 \M{Q}_2^{-1}& & \\
+          & & \ddots & \\
+          & & & \M{Q}_n\M{\Lambda}_n\M{Q}_n^{-1}
+        \end{bmatrix} \\
+        &=
+        \begin{bmatrix}
+          \M{B}_1 & & & \\
+          & \M{B}_2 & & \\
+          & & \ddots & \\
+          & & & \M{B}_n
+        \end{bmatrix} \\
+        &= \M{B}
+      \end{align*}
+      This shows that the eigenvalues of $\M{B}$ are the union of the eigenvalues
+      of the matrices $\M{B}_k$.
+      Also the eigenvectors of $\M{B}$ are related to the eigenvectors of
+      $\M{B}$.
+      The eigenvectors of $\M{B}$ are the columns of $\M{Q}$, so they are the
+      eigenvectors of $\M{B}_k$ but embedded in zeroes in the proper way.
+    \end{proof}
 
   \item % #4
     For the quadractic function
