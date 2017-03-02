@@ -5,7 +5,7 @@
 \begin{document}
 \noindent \textbf{\Large{Caleb Logemann \\
 MATH 565 Continuous Optimization \\
-Homework 1
+Homework 2
 }}
 
 %\lstinputlisting[language=Python]{H01_23.m}
@@ -88,7 +88,6 @@ Homework 1
         \alpha &= \frac{\lambda \v{b}^T\p{\v{x}_0 - \v{x}^*} - \lambda^2 \v{x}_0^T \p{\v{x}_0 - \v{x}^*}}{\lambda^3 \p{\v{x}_0 - \v{x}^*}^T\p{\v{x}_0 - \v{x}^*}} \\
         \alpha &= \frac{\lambda \v{b}^T\p{\v{x}_0 - \v{x}^*} - \lambda^2 \v{x}_0^T \p{\v{x}_0 - \v{x}^*}}{\lambda^3 \norm{\v{x}_0 - \v{x}^*}^2}
       \end{align*}
-
     \end{proof}
 
   \item % #2
@@ -103,10 +102,6 @@ Homework 1
     smallest eigenvalues of $\M{Q}$.
     (This relation, which is known as the Kantorovich inequality, can be used to
     deduce (3.29) from (3.28).)
-
-    \begin{proof}
-      
-    \end{proof}
 
   \item % #3 Done
     Problem 12 \\
@@ -197,15 +192,97 @@ Homework 1
       eigenvectors of $\M{B}_k$ but embedded in zeroes in the proper way.
     \end{proof}
 
-  \item % #4
+  \item % #4 Done
     For the quadractic function
     \[
       f(\v{x}) = \frac{1}{2} \v{x}^T \M{B} \v{x} - \v{x}^T \v{b}
     \]
-    where $\M{B} \in \RR^{n \times n}$ is symmetric positive definite, show that the
-    Newton search direction with $\alpha = 1$ satisfies the sufficient
+    where $\M{B} \in \RR^{n \times n}$ is symmetric positive definite, show that
+    the Newton search direction with $\alpha = 1$ satisfies the sufficient
     decrease assumption (3.4) for any $c_1 \le \frac{1}{2}$ and the curvature
     conditions (3.5) for any $c_2 > 0$.
+
+    \begin{proof}
+      For Newton's method the search direction is
+      \[
+        \v{p}_k = -\nabla^2 f(\v{x}_k)^{-1} \nabla f(\v{x}_k)
+      \]
+      For the given function we can find formulas for the gradient and Hessian.
+      \begin{align*}
+        \nabla f(\v{x}) &= \M{B} \v{x} - \v{b} \\
+        \nabla^2 f(\v{x}) &= \M{B} \\
+      \end{align*}
+      Plugging this in to the search direction we find that
+      \begin{align*}
+        \v{p}_k &= - \M{B}^{-1} \p{\M{B} \v{x}_k - \v{b}} \\
+        &= -\v{x}_k + \M{B}^{-1} \v{b}
+      \end{align*}
+      Since $\alpha = 1$, $\v{x}_k + \alpha \v{p}_k$ can be simplified.
+      \begin{align*}
+        \v{x}_k + \alpha \v{p}_k &= \v{x}_k + \v{p}_k \\
+        &= \v{x}_k - \v{x}_k + \M{B}^{-1} \v{b} \\
+        &= \M{B}^{-1} \v{b}
+      \end{align*}
+      The last expression that is useful to simplify is $\nabla f(x_k)^T \v{p}_k$.
+      \begin{align*}
+        \nabla f(\v{x}_k)^T \v{p}_k &= \p{\M{B} \v{x}_k - \v{b}}^T \p{\M{B}^{-1} \v{b} - \v{x}_k} \\
+        \intertext{Because $\M{B}$ is symmetric $\M{B}^T = \M{B}$}
+        &= \p{\v{x}_k^T \M{B} - \v{b}^T} \p{\M{B}^{-1} \v{b} - \v{x}_k} \\
+        &= \v{x}_k^T \M{B} \M{B}^{-1} \v{b} - \v{x}_k^T \M{B} \v{x}_k - \v{b}^T \M{B}^{-1} \v{b} + \v{b}^T\v{x}_k \\
+        &= \v{x}_k^T \v{b} - \v{x}_k^T \M{B} \v{x}_k - \v{b}^T \M{B}^{-1} \v{b} + \v{x}_k^T \v{b} \\
+        &= 2\v{x}_k^T \v{b} - \v{x}_k^T \M{B} \v{x}_k - \v{b}^T \M{B}^{-1} \v{b} \\
+      \end{align*}
+
+      Using these expressions I will verify both conditions.
+      First the sufficient decrease condition states that
+      \[
+        f(\v{x}_k + \alpha p_k) \le f(\v{x}_k) + c_1 \alpha \nabla f_k^T \v{p}_k
+      \]
+      The left hand side is
+      \begin{align*}
+        f(\v{x}_k + \alpha p_k) &= f(\M{B}^{-1} \v{b}) \\
+        &= \frac{1}{2} (\M{B}^{-1} \v{b})^T \M{B} \M{B}^{-1} \v{b} - (\M{B}^{-1} \v{b})^T \v{b} \\
+        \intertext{The inverse of $B$ is also symmetric}
+        &= \frac{1}{2} \v{b}^T \M{B}^{-1} \v{b} - \v{b}^T \M{B}^{-1} \v{b} \\
+        &= -\frac{1}{2} \v{b}^T \M{B}^{-1} \v{b}
+      \end{align*}
+      The right hand side is
+      \begin{align*}
+        f(\v{x}_k) + c_1 \alpha \nabla f_k^T \v{p}_k &= \frac{1}{2}\v{x}_k^T \M{B} \v{x} - \v{x}_k^T \v{b} + c_1\p{2\v{x}_k^T \v{b} - \v{x}_k^T \M{B} \v{x}_k - \v{b}^T \M{B}^{-1} \v{b}} \\
+        &=\p{\frac{1}{2} - c_1}\v{x}_k^T \M{B} \v{x} + \p{2c_1 - 1}\v{x}_k^T \v{b} + -c_1\v{b}^T \M{B}^{-1} \v{b}
+      \end{align*}
+      Note that $\p{\frac{1}{2} - c_1}\v{x}_k^T \M{B} \v{x}$ and $\p{2c_1 - 1}\v{x}_k^T \v{b}$
+      are positive because $c_1 \le 1/2$ and $\M{B}$ is symmetric.
+      This shows that
+      \[
+        -\frac{1}{2} \v{b}^T \M{B}^{-1} \v{b} \le \p{\frac{1}{2} - c_1}\v{x}_k^T \M{B} \v{x} + \p{2c_1 - 1}\v{x}_k^T \v{b} + -c_1\v{b}^T \M{B}^{-1} \v{b}
+      \]
+      which is equivalent to the sufficient decrease condition.
+
+      Next I will show the curvature condition holds.
+      \[
+        \nabla f(x_k + \alpha p_k)^T \v{p}_k \ge c_2 \nabla f_k^T \v{p}_k
+      \]
+      The left hand side is
+      \begin{align*}
+        \nabla f(x_k + \alpha p_k)^T \v{p}_k &= \nabla f(\M{B}^{-1} \v{b})^T \p{\M{B}^{-1} \v{b} - \v{x}_k} \\
+        &= \p{\M{B} \M{B}^{-1} \v{b} - \v{b}}^T \p{\M{B}^{-1} \v{b} - \v{x}_k} \\
+        &= \v{0}^T \p{\M{B}^{-1} \v{b} - \v{x}_k} \\
+        &= 0
+      \end{align*}
+      The right hand side is
+      \begin{align*}
+        c_2 \nabla f_k^T \v{p}_k &= c_2\p{2\v{x}_k^T \v{b} - \v{x}_k^T \M{B} \v{x}_k - \v{b}^T \M{B}^{-1} \v{b}} \\
+      \end{align*}
+      Both $\v{x}_k^T \M{B} \v{x}_k$ and $\v{b}^T \M{B}^{-1} \v{b}$ are
+      positive as $B$ is positive definite.
+      Also $\v{x}_k^T \M{B} \v{x}_k \ge \norm{\v{x}_k}$ and $\v{b}^T \M{B}^{-1} \v{b} \ge \norm{\v{b}}$.
+      This with the fact that $\v{x}_k^T \v{b} \le \norm{\v{x}} + \norm{\v{b}}$, gives
+      \[
+        c_2 \nabla f_k^T \v{p}_k \le 0 = \nabla f(x_k + \alpha p_k)^T \v{p}_k
+      \]
+      This shows that the curvature condition is met.
+    \end{proof}
 
   \item % #5 Done
     Consider the function:
