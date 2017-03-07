@@ -48,13 +48,13 @@ eta = .2
 TOL = 1e-10
 MaxIter = 100
 
-x0 = [-5.5, -5.5]
-sol0 = trustRegionMethod(f, gradf, hessianf, doglegMethod, x0, maxDelta, Delta0, eta, TOL, MaxIter)
 x0 = [5.5, 5.5]
-sol1 = trustRegionMethod(f, gradf, hessianf, doglegMethod, x0, maxDelta, Delta0, eta, TOL, MaxIter)
+sol0 = trustRegionMethod(f, gradf, hessianf, doglegMethod, x0, maxDelta, Delta0, eta, TOL, MaxIter)
 x0 = [-5.5, 5.5]
-sol2 = trustRegionMethod(f, gradf, hessianf, doglegMethod, x0, maxDelta, Delta0, eta, TOL, MaxIter)
+sol1 = trustRegionMethod(f, gradf, hessianf, doglegMethod, x0, maxDelta, Delta0, eta, TOL, MaxIter)
 x0 = [5.5, -5.5]
+sol2 = trustRegionMethod(f, gradf, hessianf, doglegMethod, x0, maxDelta, Delta0, eta, TOL, MaxIter)
+x0 = [-5.5, -5.5]
 sol3 = trustRegionMethod(f, gradf, hessianf, doglegMethod, x0, maxDelta, Delta0, eta, TOL, MaxIter)
 solList = [sol0, sol1, sol2, sol3]
 

@@ -1,5 +1,6 @@
 execfile("trustRegionMethod.py")
 execfile("doglegMethod.py")
+execfile("cauchyPointMethod.py")
 
 d = np.array([[   0,  587, 1212,  701, 1936,  604,  748, 2139, 2182,  543,  762],
               [ 587,    0,  920,  940, 1745, 1188,  713, 1858, 1737,  597,  309],
@@ -14,7 +15,6 @@ d = np.array([[   0,  587, 1212,  701, 1936,  604,  748, 2139, 2182,  543,  762]
               [ 762,  309,  614,  854, 1443, 1361, 1021, 1548, 1451,  898,    0]])
 N = len(d)
 def f(v):
-    ipdb.set_trace()
     x = v[::2]
     y = v[1::2]
     return sum([sum([((x[i] - x[j])**2 + (y[i] - y[j])**2 - d[i,j]**2)**2 for j in range(N)]) for i in range(N)])
@@ -112,12 +112,12 @@ def plotResults(sol, title):
     plt.title(title)
     plt.show()
 
-maxDelta = 100
-Delta0 = 100
+maxDelta = 10
+Delta0 = 10
 
-eta = .2
+eta = 0
 TOL = 1e-10
-MaxIter = 2000
+MaxIter = 5000
 
 x0 = np.zeros(2*N)
 xCoordinates = 3000*np.random.rand(N) - 1500
@@ -125,6 +125,6 @@ yCoordinates = 1000*np.random.rand(N) - 500
 x0[::2] = xCoordinates
 x0[1::2] = yCoordinates
 
-#sol = trustRegionMethod(f, gradf, hessianf, doglegMethod, x0, maxDelta, Delta0, eta, TOL, MaxIter)
+sol = trustRegionMethod(f, gradf, hessianf, cauchyPointMethod, x0, maxDelta, Delta0, eta, TOL, MaxIter)
 
 plotResults(sol, "")

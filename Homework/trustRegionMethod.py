@@ -11,22 +11,17 @@ def trustRegionMethod(f, gradf, B, minimizingFunction, x0, maxDelta, Delta0, eta
     gradfx = gradf(x[nIter])
     while nIter < MaxIter and mstop:
         Bx = B(x[nIter])
-        ipdb.set_trace()
         p = minimizingFunction(gradfx, Bx, Delta)
 
-        deltaM = -np.dot(p, gradfx) - np.dot(p, np.dot(Bx, p))
-        if abs(deltaM) < TOL:
-            rho = 1
-        else:
-            rho = (f(x[nIter]) - f(x[nIter] + p))/(deltaM)
+        m = lambda p: f(x[nIter]) + np.dot(p, gradfx) + (1.0/2.0)*np.dot(p, np.dot(Bx, p))
+        deltaM = m(np.zeros(N)) - m(p)
+        rho = (f(x[nIter]) - f(x[nIter] + p))/(deltaM)
 
         # modify trust region size
         if rho < 1.0/4.0:
             Delta = (1.0/4.0)*Delta
-            #print(Delta)
         elif rho > 3.0/4.0 and abs(np.linalg.norm(p) - Delta) < 1e-5:
             Delta = min(2*Delta, maxDelta)
-            #print(Delta)
 
         # Decide whether or not to reject step
         if rho > eta:
@@ -35,6 +30,8 @@ def trustRegionMethod(f, gradf, B, minimizingFunction, x0, maxDelta, Delta0, eta
             x[nIter + 1] = x[nIter]
 
         nIter+=1
+        if nIter % 100 == 0:
+            print((nIter + 0.0)/MaxIter)
         gradfx = gradf(x[nIter])
         if np.linalg.norm(p) < TOL and np.linalg.norm(gradfx) < TOL:
             mstop = 0
