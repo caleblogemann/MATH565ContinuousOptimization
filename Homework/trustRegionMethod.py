@@ -1,16 +1,24 @@
 import numpy as np
-import norms
+import ipdb
 def trustRegionMethod(f, gradf, B, minimizingFunction, x0, maxDelta, Delta0, eta, TOL, MaxIter):
-    x = np.zeros(MaxIter+1)
+    N = len(x0)
+    x = np.zeros([MaxIter+1, N])
     x[0] = x0
     nIter = 0
     mstop = 1
+    Delta = Delta0
 
-    gradfx = gradf(x[nIter]) 
+    gradfx = gradf(x[nIter])
     while nIter < MaxIter and mstop:
         Bx = B(x[nIter])
+        # ipdb.set_trace()
         p = minimizingFunction(gradfx, Bx, Delta)
-        rho = (f(x[nIter]) - f(x[nIter] + p))/(-np.dot(gradfx, p) - (1/2)*np.dot(p, np.dot(Bx, p)))
+
+        deltaM = -np.dot(p, gradfx) - np.dot(p, np.dot(Bx, p))
+        if abs(deltaM) < TOL:
+            rho = 1
+        else:
+            rho = (f(x[nIter]) - f(x[nIter] + p))/(deltaM)
 
         # modify trust region size
         if rho < 1/4:
@@ -25,6 +33,7 @@ def trustRegionMethod(f, gradf, B, minimizingFunction, x0, maxDelta, Delta0, eta
             x[nIter + 1] = x[nIter]
 
         nIter += 1
+        nIter+=1
         gradfx = gradf(x[nIter])
         if np.linalg.norm(p) < TOL and np.linalg.norm(gradfx) < TOL:
             mstop = 0
