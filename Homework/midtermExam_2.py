@@ -44,7 +44,7 @@ def plotResults(f, x0Range, x1Range, solList, title):
 maxDelta = 2
 Delta0 = 1
 
-eta = 1/8
+eta = .2
 TOL = 1e-10
 MaxIter = 100
 

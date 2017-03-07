@@ -1,13 +1,20 @@
 import numpy as np
 def doglegMethod(g, B, Delta):
     # exact minimizer of approximation function, m
+    #ipdb.set_trace()
+    # try:
+        # pB = -np.linalg.solve(B, g)
+    # except LinAlgError:
+        # print('Singular Matrix')
+        # pB = 2*Delta*np.array([1]*len(g))
     pB = -np.linalg.solve(B, g)
     if np.linalg.norm(pB) < Delta:
         # print('Exact')
         return pB
 
     # steepest descent minimizer
-    pU = - np.dot(g, g)/np.dot(g, np.dot(B, g)) * g
+    #ipdb.set_trace()
+    pU = -np.dot(g, g)/np.dot(g, np.dot(B, g)) * g
     if np.linalg.norm(pU) > Delta:
         # print('Steepest Descent')
         return Delta/np.linalg.norm(pU) * pU
