@@ -1,0 +1,44 @@
+\documentclass[11pt, oneside]{article}
+\usepackage[letterpaper, margin=2cm]{geometry}
+\usepackage{MATH565}
+
+\begin{document}
+\noindent \textbf{\Large{Caleb Logemann \\
+MATH 565 Continuous Optimization \\
+Homework 3
+}}
+
+%\lstinputlisting[language=Python]{H01_23.m}
+\begin{enumerate}
+  \item % #1
+    Page 100: Problem 4.9. \\
+
+  \item % #2
+    Page 100: Problem 4.10. \\
+
+  \item % #3
+    Implement the linear conjugate gradient method in \MATLAB or \PYTHON.
+
+  \item % #4
+    Page 133: Problem 5.1. (Use your method from the previous problem).
+
+  \item % #5
+    Page 133: Problem 5.2.
+
+  \item % #6
+    Let $n = N^2$.
+    Downlonad the \MATLAB file CreateA.m from the course website.
+    The correct syntax for calling this code is
+    \[
+      A = CreateA(N);
+    \]
+    This creates a matrix of size $N^2 \times N^2$.
+
+    Apply your conjugate gradient method to this problem for various $N$.
+    Make a table that records the number of iterations required to achieve a
+    reasonable tolerance for $N = 10, 20, 40, 80, 160, 320$.
+    You should use the same tolerance in each case.
+    How does the number of iterations scale with N?
+    What does this tell you about the condition number of $S$ as $N$ varies?
+\end{enumerate}
+\end{document}
