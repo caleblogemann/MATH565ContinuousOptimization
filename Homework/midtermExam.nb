@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[    114854,       2995]
-NotebookOptionsPosition[    112107,       2902]
-NotebookOutlinePosition[    112459,       2918]
-CellTagsIndexPosition[    112416,       2915]
+NotebookDataLength[    118612,       3087]
+NotebookOptionsPosition[    115709,       2989]
+NotebookOutlinePosition[    116062,       3005]
+CellTagsIndexPosition[    116019,       3002]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -99,7 +99,7 @@ Cell[BoxData[{
        RowBox[{
        "762", ",", "309", ",", "614", ",", "854", ",", "1443", ",", "1361", 
         ",", "1021", ",", "1548", ",", "1451", ",", "898", ",", "0"}], 
-       "}"}]}], "}"}]}], ";"}], "\n"}], "\[IndentingNewLine]", 
+       "}"}]}], "}"}]}], ";"}], "\[IndentingNewLine]"}], "\n", 
  RowBox[{
   RowBox[{"f", "[", 
    RowBox[{"x_", ",", "y_"}], "]"}], ":=", 
@@ -905,10 +905,9 @@ Cell[BoxData[
 Cell[BoxData[
  RowBox[{
   StyleBox[
-   RowBox[{"Part", "::", "partd"}], "MessageName"], 
-  RowBox[{
-  ":", " "}], "\<\"Part specification \[NoBreak]\\!\\(x \[LeftDoubleBracket] \
-1 \[RightDoubleBracket]\\)\[NoBreak] is longer than depth of object. \
+   RowBox[{"Part", "::", "partd"}], "MessageName"], ":", 
+  " ", "\<\"Part specification \[NoBreak]\\!\\(x \[LeftDoubleBracket] 1 \
+\[RightDoubleBracket]\\)\[NoBreak] is longer than depth of object. \
 \\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", ButtonStyle->\\\"Link\\\", \
 ButtonFrame->None, ButtonData:>\\\"paclet:ref/message/General/partd\\\", \
 ButtonNote -> \\\"Part::partd\\\"]\\)\"\>"}]], "Message", "MSG",
@@ -918,10 +917,9 @@ ButtonNote -> \\\"Part::partd\\\"]\\)\"\>"}]], "Message", "MSG",
 Cell[BoxData[
  RowBox[{
   StyleBox[
-   RowBox[{"Part", "::", "partd"}], "MessageName"], 
-  RowBox[{
-  ":", " "}], "\<\"Part specification \[NoBreak]\\!\\(x \[LeftDoubleBracket] \
-1 \[RightDoubleBracket]\\)\[NoBreak] is longer than depth of object. \
+   RowBox[{"Part", "::", "partd"}], "MessageName"], ":", 
+  " ", "\<\"Part specification \[NoBreak]\\!\\(x \[LeftDoubleBracket] 1 \
+\[RightDoubleBracket]\\)\[NoBreak] is longer than depth of object. \
 \\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", ButtonStyle->\\\"Link\\\", \
 ButtonFrame->None, ButtonData:>\\\"paclet:ref/message/General/partd\\\", \
 ButtonNote -> \\\"Part::partd\\\"]\\)\"\>"}]], "Message", "MSG",
@@ -931,10 +929,9 @@ ButtonNote -> \\\"Part::partd\\\"]\\)\"\>"}]], "Message", "MSG",
 Cell[BoxData[
  RowBox[{
   StyleBox[
-   RowBox[{"Part", "::", "partd"}], "MessageName"], 
-  RowBox[{
-  ":", " "}], "\<\"Part specification \[NoBreak]\\!\\(y \[LeftDoubleBracket] \
-1 \[RightDoubleBracket]\\)\[NoBreak] is longer than depth of object. \
+   RowBox[{"Part", "::", "partd"}], "MessageName"], ":", 
+  " ", "\<\"Part specification \[NoBreak]\\!\\(y \[LeftDoubleBracket] 1 \
+\[RightDoubleBracket]\\)\[NoBreak] is longer than depth of object. \
 \\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", ButtonStyle->\\\"Link\\\", \
 ButtonFrame->None, ButtonData:>\\\"paclet:ref/message/General/partd\\\", \
 ButtonNote -> \\\"Part::partd\\\"]\\)\"\>"}]], "Message", "MSG",
@@ -944,9 +941,8 @@ ButtonNote -> \\\"Part::partd\\\"]\\)\"\>"}]], "Message", "MSG",
 Cell[BoxData[
  RowBox[{
   StyleBox[
-   RowBox[{"General", "::", "stop"}], "MessageName"], 
-  RowBox[{
-  ":", " "}], "\<\"Further output of \[NoBreak]\\!\\(\\*StyleBox[\\(Part :: \
+   RowBox[{"General", "::", "stop"}], "MessageName"], ":", 
+  " ", "\<\"Further output of \[NoBreak]\\!\\(\\*StyleBox[\\(Part :: \
 partd\\), \\\"MessageName\\\"]\\)\[NoBreak] will be suppressed during this \
 calculation. \\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", \
 ButtonStyle->\\\"Link\\\", ButtonFrame->None, \
@@ -1439,10 +1435,9 @@ Cell[BoxData[
 Cell[BoxData[
  RowBox[{
   StyleBox[
-   RowBox[{"Part", "::", "partd"}], "MessageName"], 
-  RowBox[{
-  ":", " "}], "\<\"Part specification \[NoBreak]\\!\\(x \[LeftDoubleBracket] \
-1 \[RightDoubleBracket]\\)\[NoBreak] is longer than depth of object. \
+   RowBox[{"Part", "::", "partd"}], "MessageName"], ":", 
+  " ", "\<\"Part specification \[NoBreak]\\!\\(x \[LeftDoubleBracket] 1 \
+\[RightDoubleBracket]\\)\[NoBreak] is longer than depth of object. \
 \\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", ButtonStyle->\\\"Link\\\", \
 ButtonFrame->None, ButtonData:>\\\"paclet:ref/message/General/partd\\\", \
 ButtonNote -> \\\"Part::partd\\\"]\\)\"\>"}]], "Message", "MSG",
@@ -1451,10 +1446,9 @@ ButtonNote -> \\\"Part::partd\\\"]\\)\"\>"}]], "Message", "MSG",
 Cell[BoxData[
  RowBox[{
   StyleBox[
-   RowBox[{"Part", "::", "partd"}], "MessageName"], 
-  RowBox[{
-  ":", " "}], "\<\"Part specification \[NoBreak]\\!\\(x \[LeftDoubleBracket] \
-1 \[RightDoubleBracket]\\)\[NoBreak] is longer than depth of object. \
+   RowBox[{"Part", "::", "partd"}], "MessageName"], ":", 
+  " ", "\<\"Part specification \[NoBreak]\\!\\(x \[LeftDoubleBracket] 1 \
+\[RightDoubleBracket]\\)\[NoBreak] is longer than depth of object. \
 \\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", ButtonStyle->\\\"Link\\\", \
 ButtonFrame->None, ButtonData:>\\\"paclet:ref/message/General/partd\\\", \
 ButtonNote -> \\\"Part::partd\\\"]\\)\"\>"}]], "Message", "MSG",
@@ -1463,10 +1457,9 @@ ButtonNote -> \\\"Part::partd\\\"]\\)\"\>"}]], "Message", "MSG",
 Cell[BoxData[
  RowBox[{
   StyleBox[
-   RowBox[{"Part", "::", "partd"}], "MessageName"], 
-  RowBox[{
-  ":", " "}], "\<\"Part specification \[NoBreak]\\!\\(x \[LeftDoubleBracket] \
-1 \[RightDoubleBracket]\\)\[NoBreak] is longer than depth of object. \
+   RowBox[{"Part", "::", "partd"}], "MessageName"], ":", 
+  " ", "\<\"Part specification \[NoBreak]\\!\\(x \[LeftDoubleBracket] 1 \
+\[RightDoubleBracket]\\)\[NoBreak] is longer than depth of object. \
 \\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", ButtonStyle->\\\"Link\\\", \
 ButtonFrame->None, ButtonData:>\\\"paclet:ref/message/General/partd\\\", \
 ButtonNote -> \\\"Part::partd\\\"]\\)\"\>"}]], "Message", "MSG",
@@ -1475,9 +1468,8 @@ ButtonNote -> \\\"Part::partd\\\"]\\)\"\>"}]], "Message", "MSG",
 Cell[BoxData[
  RowBox[{
   StyleBox[
-   RowBox[{"General", "::", "stop"}], "MessageName"], 
-  RowBox[{
-  ":", " "}], "\<\"Further output of \[NoBreak]\\!\\(\\*StyleBox[\\(Part :: \
+   RowBox[{"General", "::", "stop"}], "MessageName"], ":", 
+  " ", "\<\"Further output of \[NoBreak]\\!\\(\\*StyleBox[\\(Part :: \
 partd\\), \\\"MessageName\\\"]\\)\[NoBreak] will be suppressed during this \
 calculation. \\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", \
 ButtonStyle->\\\"Link\\\", ButtonFrame->None, \
@@ -2203,10 +2195,9 @@ Cell[BoxData[
 Cell[BoxData[
  RowBox[{
   StyleBox[
-   RowBox[{"Part", "::", "partd"}], "MessageName"], 
-  RowBox[{
-  ":", " "}], "\<\"Part specification \[NoBreak]\\!\\(x \[LeftDoubleBracket] \
-1 \[RightDoubleBracket]\\)\[NoBreak] is longer than depth of object. \
+   RowBox[{"Part", "::", "partd"}], "MessageName"], ":", 
+  " ", "\<\"Part specification \[NoBreak]\\!\\(x \[LeftDoubleBracket] 1 \
+\[RightDoubleBracket]\\)\[NoBreak] is longer than depth of object. \
 \\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", ButtonStyle->\\\"Link\\\", \
 ButtonFrame->None, ButtonData:>\\\"paclet:ref/message/General/partd\\\", \
 ButtonNote -> \\\"Part::partd\\\"]\\)\"\>"}]], "Message", "MSG",
@@ -2215,10 +2206,9 @@ ButtonNote -> \\\"Part::partd\\\"]\\)\"\>"}]], "Message", "MSG",
 Cell[BoxData[
  RowBox[{
   StyleBox[
-   RowBox[{"Part", "::", "partd"}], "MessageName"], 
-  RowBox[{
-  ":", " "}], "\<\"Part specification \[NoBreak]\\!\\(x \[LeftDoubleBracket] \
-1 \[RightDoubleBracket]\\)\[NoBreak] is longer than depth of object. \
+   RowBox[{"Part", "::", "partd"}], "MessageName"], ":", 
+  " ", "\<\"Part specification \[NoBreak]\\!\\(x \[LeftDoubleBracket] 1 \
+\[RightDoubleBracket]\\)\[NoBreak] is longer than depth of object. \
 \\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", ButtonStyle->\\\"Link\\\", \
 ButtonFrame->None, ButtonData:>\\\"paclet:ref/message/General/partd\\\", \
 ButtonNote -> \\\"Part::partd\\\"]\\)\"\>"}]], "Message", "MSG",
@@ -2227,10 +2217,9 @@ ButtonNote -> \\\"Part::partd\\\"]\\)\"\>"}]], "Message", "MSG",
 Cell[BoxData[
  RowBox[{
   StyleBox[
-   RowBox[{"Part", "::", "partd"}], "MessageName"], 
-  RowBox[{
-  ":", " "}], "\<\"Part specification \[NoBreak]\\!\\(y \[LeftDoubleBracket] \
-1 \[RightDoubleBracket]\\)\[NoBreak] is longer than depth of object. \
+   RowBox[{"Part", "::", "partd"}], "MessageName"], ":", 
+  " ", "\<\"Part specification \[NoBreak]\\!\\(y \[LeftDoubleBracket] 1 \
+\[RightDoubleBracket]\\)\[NoBreak] is longer than depth of object. \
 \\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", ButtonStyle->\\\"Link\\\", \
 ButtonFrame->None, ButtonData:>\\\"paclet:ref/message/General/partd\\\", \
 ButtonNote -> \\\"Part::partd\\\"]\\)\"\>"}]], "Message", "MSG",
@@ -2239,9 +2228,8 @@ ButtonNote -> \\\"Part::partd\\\"]\\)\"\>"}]], "Message", "MSG",
 Cell[BoxData[
  RowBox[{
   StyleBox[
-   RowBox[{"General", "::", "stop"}], "MessageName"], 
-  RowBox[{
-  ":", " "}], "\<\"Further output of \[NoBreak]\\!\\(\\*StyleBox[\\(Part :: \
+   RowBox[{"General", "::", "stop"}], "MessageName"], ":", 
+  " ", "\<\"Further output of \[NoBreak]\\!\\(\\*StyleBox[\\(Part :: \
 partd\\), \\\"MessageName\\\"]\\)\[NoBreak] will be suppressed during this \
 calculation. \\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", \
 ButtonStyle->\\\"Link\\\", ButtonFrame->None, \
@@ -2898,12 +2886,111 @@ Cell[BoxData[
    RowBox[{"-", "234.4982049713664`"}], ",", 
    RowBox[{"-", "181.37595544111772`"}]}], "}"}]], "Output",
  CellChangeTimes->{3.697855876645583*^9}]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"f", "[", 
+   RowBox[{"x_", ",", "y_"}], "]"}], ":=", 
+  RowBox[{"Sum", "[", 
+   RowBox[{
+    SuperscriptBox[
+     RowBox[{"(", 
+      RowBox[{
+       SuperscriptBox[
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"x", "[", 
+           RowBox[{"[", "i", "]"}], "]"}], " ", "-", " ", 
+          RowBox[{"x", "[", 
+           RowBox[{"[", "j", "]"}], "]"}]}], ")"}], "2"], "+", " ", 
+       SuperscriptBox[
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"y", "[", 
+           RowBox[{"[", "i", "]"}], "]"}], "-", 
+          RowBox[{"y", "[", 
+           RowBox[{"[", "j", "]"}], "]"}]}], ")"}], "2"], "-", 
+       SuperscriptBox[
+        RowBox[{"d", "[", 
+         RowBox[{"[", 
+          RowBox[{"i", ",", "j"}], "]"}], "]"}], "2"]}], ")"}], "2"], ",", 
+    RowBox[{"{", 
+     RowBox[{"i", ",", "1", ",", "n"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"j", ",", "1", ",", "n"}], "}"}]}], "]"}]}]], "Input"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"NMinimize", "[", 
+  RowBox[{
+   RowBox[{"f", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+      "x1", ",", "x2", ",", "x3", ",", "x4", ",", "x5", ",", "x6", ",", "x7", 
+       ",", "x8", ",", "x9", ",", "x10", ",", "x11"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{
+      "y1", ",", "y2", ",", "y3", ",", "y4", ",", "y5", ",", "y6", ",", "y7", 
+       ",", "y8", ",", "y9", ",", "y10", ",", "y11"}], "}"}]}], "]"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "x1", ",", "x2", ",", "x3", ",", "x4", ",", "x5", ",", "x6", ",", "x7", 
+     ",", "x8", ",", "x9", ",", "x10", ",", "x11", ",", "y1", ",", "y2", ",", 
+     "y3", ",", "y4", ",", "y5", ",", "y6", ",", "y7", ",", "y8", ",", "y9", 
+     ",", "y10", ",", "y11"}], "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.6978886783634853`*^9, 3.697888757220694*^9}, {
+  3.697888982066147*^9, 3.6978890100666647`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"7.909500649184276`*^9", ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"x1", "\[Rule]", "790840.5692962513`"}], ",", 
+     RowBox[{"x2", "\[Rule]", "791208.3337282989`"}], ",", 
+     RowBox[{"x3", "\[Rule]", "790658.6271311275`"}], ",", 
+     RowBox[{"x4", "\[Rule]", "790270.0663005597`"}], ",", 
+     RowBox[{"x5", "\[Rule]", "790056.9401805947`"}], ",", 
+     RowBox[{"x6", "\[Rule]", "790539.7118753722`"}], ",", 
+     RowBox[{"x7", "\[Rule]", "791574.6210274957`"}], ",", 
+     RowBox[{"x8", "\[Rule]", "790258.8373202197`"}], ",", 
+     RowBox[{"x9", "\[Rule]", "790939.9640987263`"}], ",", 
+     RowBox[{"x10", "\[Rule]", "791372.9995942566`"}], ",", 
+     RowBox[{"x11", "\[Rule]", "791060.7030288099`"}], ",", 
+     RowBox[{"y1", "\[Rule]", 
+      RowBox[{"-", "1.4832453753416296`*^6"}]}], ",", 
+     RowBox[{"y2", "\[Rule]", 
+      RowBox[{"-", "1.4827842527238936`*^6"}]}], ",", 
+     RowBox[{"y3", "\[Rule]", 
+      RowBox[{"-", "1.4820462688594484`*^6"}]}], ",", 
+     RowBox[{"y4", "\[Rule]", 
+      RowBox[{"-", "1.4828339977513044`*^6"}]}], ",", 
+     RowBox[{"y5", "\[Rule]", 
+      RowBox[{"-", "1.4814742333078827`*^6"}]}], ",", 
+     RowBox[{"y6", "\[Rule]", 
+      RowBox[{"-", "1.4837671602515804`*^6"}]}], ",", 
+     RowBox[{"y7", "\[Rule]", 
+      RowBox[{"-", "1.4833947562594132`*^6"}]}], ",", 
+     RowBox[{"y8", "\[Rule]", 
+      RowBox[{"-", "1.4811870846877561`*^6"}]}], ",", 
+     RowBox[{"y9", "\[Rule]", 
+      RowBox[{"-", "1.481067158299692`*^6"}]}], ",", 
+     RowBox[{"y10", "\[Rule]", 
+      RowBox[{"-", "1.4833583071942076`*^6"}]}], ",", 
+     RowBox[{"y11", "\[Rule]", 
+      RowBox[{"-", "1.482512166839499`*^6"}]}]}], "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{
+  3.6978886887130833`*^9, 3.6978887597506933`*^9, {3.697888978827437*^9, 
+   3.697889011230564*^9}}]
 }, Open  ]]
 },
 WindowSize->{1280, 751},
 WindowMargins->{{0, Automatic}, {Automatic, 0}},
-FrontEndVersion->"10.2 for Mac OS X x86 (32-bit, 64-bit Kernel) (July 6, \
-2015)",
+FrontEndVersion->"11.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (July 28, \
+2016)",
 StyleDefinitions->"Default.nb"
 ]
 (* End of Notebook Content *)
@@ -2917,85 +3004,90 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[558, 20, 93, 1, 28, "Input"],
-Cell[654, 23, 5751, 152, 274, "Input"],
+Cell[558, 20, 93, 1, 32, "Input"],
+Cell[654, 23, 5751, 152, 330, "Input"],
 Cell[CellGroupData[{
-Cell[6430, 179, 636, 16, 28, "Input"],
+Cell[6430, 179, 636, 16, 32, "Input"],
 Cell[7069, 197, 6222, 187, 105, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[13328, 389, 181, 4, 28, "Input"],
+Cell[13328, 389, 181, 4, 32, "Input"],
 Cell[13512, 395, 1417, 47, 36, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[14966, 447, 669, 18, 28, "Input"],
+Cell[14966, 447, 669, 18, 32, "Input"],
 Cell[15638, 467, 6953, 222, 105, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[22628, 694, 319, 10, 28, "Input"],
+Cell[22628, 694, 319, 10, 32, "Input"],
 Cell[22950, 706, 947, 28, 35, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[23934, 739, 528, 16, 28, "Input"],
-Cell[24465, 757, 2723, 84, 76, "Output"]
+Cell[23934, 739, 528, 16, 32, "Input"],
+Cell[24465, 757, 2723, 84, 77, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[27225, 846, 147, 3, 28, "Input"],
-Cell[27375, 851, 133, 2, 28, "Output"]
+Cell[27225, 846, 147, 3, 32, "Input"],
+Cell[27375, 851, 133, 2, 32, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[27545, 858, 1524, 44, 46, "Input"],
-Cell[29072, 904, 603, 11, 24, "Message"],
-Cell[29678, 917, 603, 11, 24, "Message"],
-Cell[30284, 930, 605, 11, 24, "Message"],
-Cell[30892, 943, 626, 12, 24, "Message"],
-Cell[31521, 957, 1227, 40, 251, "Output"]
+Cell[27545, 858, 1524, 44, 54, "Input"],
+Cell[29072, 904, 590, 10, 24, "Message"],
+Cell[29665, 916, 590, 10, 24, "Message"],
+Cell[30258, 928, 592, 10, 24, "Message"],
+Cell[30853, 940, 613, 11, 24, "Message"],
+Cell[31469, 953, 1227, 40, 251, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[32785, 1002, 451, 14, 28, "Input"],
-Cell[33239, 1018, 9936, 352, 167, "Output"]
+Cell[32733, 998, 451, 14, 32, "Input"],
+Cell[33187, 1014, 9936, 352, 173, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[43212, 1375, 2204, 61, 46, "Input"],
-Cell[45419, 1438, 503, 10, 24, "Message"],
-Cell[45925, 1450, 507, 10, 24, "Message"],
-Cell[46435, 1462, 504, 10, 24, "Message"],
-Cell[46942, 1474, 528, 11, 24, "Message"],
-Cell[47473, 1487, 13342, 280, 760, "Output"]
+Cell[43160, 1371, 2204, 61, 54, "Input"],
+Cell[45367, 1434, 490, 9, 24, "Message"],
+Cell[45860, 1445, 494, 9, 24, "Message"],
+Cell[46357, 1456, 491, 9, 24, "Message"],
+Cell[46851, 1467, 515, 10, 24, "Message"],
+Cell[47369, 1479, 13342, 280, 936, "Output"]
 }, Open  ]],
-Cell[60830, 1770, 13981, 284, 760, "Input"],
+Cell[60726, 1762, 13981, 284, 936, "Input"],
 Cell[CellGroupData[{
-Cell[74836, 2058, 246, 4, 28, "Input"],
-Cell[75085, 2064, 123, 2, 28, "Output"]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[75245, 2071, 206, 4, 28, "Input"],
-Cell[75454, 2077, 897, 17, 77, "Output"]
+Cell[74732, 2050, 246, 4, 32, "Input"],
+Cell[74981, 2056, 123, 2, 32, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[76388, 2099, 963, 18, 97, "Input"],
-Cell[77354, 2119, 894, 17, 77, "Output"]
+Cell[75141, 2063, 206, 4, 32, "Input"],
+Cell[75350, 2069, 897, 17, 79, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[78285, 2141, 2055, 59, 46, "Input"],
-Cell[80343, 2202, 505, 10, 24, "Message"],
-Cell[80851, 2214, 505, 10, 24, "Message"],
-Cell[81359, 2226, 505, 10, 24, "Message"],
-Cell[81867, 2238, 527, 11, 24, "Message"],
-Cell[82397, 2251, 13391, 289, 760, "Output"]
-}, Open  ]],
-Cell[95803, 2543, 14074, 296, 760, "Input"],
-Cell[CellGroupData[{
-Cell[109902, 2843, 159, 3, 28, "Input"],
-Cell[110064, 2848, 911, 17, 77, "Output"]
+Cell[76284, 2091, 963, 18, 117, "Input"],
+Cell[77250, 2111, 894, 17, 79, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[111012, 2870, 197, 3, 28, "Input"],
-Cell[111212, 2875, 96, 1, 28, "Output"]
+Cell[78181, 2133, 2055, 59, 54, "Input"],
+Cell[80239, 2194, 492, 9, 24, "Message"],
+Cell[80734, 2205, 492, 9, 24, "Message"],
+Cell[81229, 2216, 492, 9, 24, "Message"],
+Cell[81724, 2227, 514, 10, 24, "Message"],
+Cell[82241, 2239, 13391, 289, 936, "Output"]
+}, Open  ]],
+Cell[95647, 2531, 14074, 296, 936, "Input"],
+Cell[CellGroupData[{
+Cell[109746, 2831, 159, 3, 32, "Input"],
+Cell[109908, 2836, 911, 17, 79, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[111345, 2881, 158, 3, 28, "Input"],
-Cell[111506, 2886, 585, 13, 62, "Output"]
+Cell[110856, 2858, 197, 3, 32, "Input"],
+Cell[111056, 2863, 96, 1, 32, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[111189, 2869, 158, 3, 32, "Input"],
+Cell[111350, 2874, 585, 13, 32, "Output"]
+}, Open  ]],
+Cell[111950, 2890, 966, 30, 36, "Input"],
+Cell[CellGroupData[{
+Cell[112941, 2924, 898, 20, 54, "Input"],
+Cell[113842, 2946, 1851, 40, 79, "Output"]
 }, Open  ]]
 }
 ]

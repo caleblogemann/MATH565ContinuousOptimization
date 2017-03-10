@@ -1,0 +1,3 @@
+def linearConjugateGradient():
+
+    return x
