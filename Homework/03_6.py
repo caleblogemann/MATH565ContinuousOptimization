@@ -3,6 +3,7 @@ from scipy.sparse import lil_matrix
 from scipy.sparse import identity
 
 execfile('linearConjugateGradient.py')
+import ipdb
 
 def CreateA(n1):
     e1= np.ones(n1)
@@ -29,9 +30,14 @@ def CreateA(n1):
 
 TOL = 1e-6
 MaxIter = 500
-for n in [10, 20, 40, 80, 160]:
-    x = np.zeros(n*n)
+for n in [10, 20, 40, 80]:
+    x0 = np.zeros(n*n)
     b = np.ones(n*n)
     A = CreateA(n).toarray()
-    (x, k) = linearConjugateGradient(A, b, x, MaxIter, TOL)
+    (x, k) = linearConjugateGradient(A, b, x0, MaxIter, TOL)
     print(k)
+    ek = TOL
+    e0 = np.linalg.norm(x - x0)
+    e = (ek/(2*e0))**(1.0/k)
+    cond = ((e + 1)/(1 - e))**2
+    print(cond)

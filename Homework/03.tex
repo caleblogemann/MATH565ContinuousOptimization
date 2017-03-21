@@ -56,9 +56,11 @@ Homework 3
       This shows that $B + \lambda I$ is positive definite.
     \end{proof}
 
-  \item % #3
+  \item % #3 Done
     Implement the linear conjugate gradient method in \MATLAB or \PYTHON.
 
+    The following function implements the linear conjugate gradient method in
+    \PYTHON.
     \lstinputlisting[language=Python]{linearConjugateGradient.py}
 
   \item % #4
@@ -70,7 +72,24 @@ Homework 3
     Try dimensions $n = 5, 8, 12, 20$ and report the number of iterations
     required to reduce the residual below $10^{-6}$.
 
+    The following script uses the linear conjugate gradient method to solve the
+    given linear system.
     \lstinputlisting[language=Python]{03_4.py}
+
+    The required number of iterations to achieve error less than $10^{-6}$ is
+    shown in the table below for different size matrices.
+    \begin{center}
+      \begin{tabular}
+        \toprule
+           n & Number of Iterations \\
+        \midrule
+           5 &  \\
+           8 &  \\
+          12 &  \\
+          20 &  \\
+        \bottomrule
+      \end{tabular}
+    \end{center}
 
   \item % #5 Done
     Page 133: Problem 5.2. \\
@@ -126,6 +145,8 @@ Homework 3
 
     \lstinputlisting[language=Python]{03_6.py}
 
+    For this problem, I used $b = \br{1, 1, \ldots, 1}^T$ and $x_0 = 0$.
+    The error tolerance was $10^{-6}$.
     \begin{center}
       \begin{tabular}
         \toprule
@@ -140,6 +161,7 @@ Homework 3
         \bottomrule
       \end{tabular}
     \end{center}
+    This sho
 
 \end{enumerate}
 \end{document}
