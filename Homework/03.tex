@@ -10,7 +10,7 @@ Homework 3
 
 %\lstinputlisting[language=Python]{H01_23.m}
 \begin{enumerate}
-  \item % #1
+  \item % #1 Done
     Page 100: Problem 4.9. \\
     Derive the solution of the two-dimensional subspace minimization problem in
     the case where $B$ is positive definite.
@@ -23,7 +23,69 @@ Homework 3
       If $\norm{B^{-1} g} \le \Delta$, then clearly $p = B^{-1} g$ is the optimal
       solution to the minimization subproblem.
       Therefore let $\norm{B^{-1} g} > \Delta$.
-      In this case
+      In this case, since the model function is convex as $B$ is positive
+      definite, the minimal solution will be on the boundary.
+      In other words $\norm{p} = \Delta$.
+      Also since $p \in \spanspace{g, B^{-1}g}$, we can rewrite $p$ as
+      $p = c_1 g + c_2 B^{-1} g$.
+      In this case the model function can be expressed as a function of $c_1$
+      and $c_2$,
+      \[
+        m(c_1, c_2) = f + g^T \p{c_1 g + c_2 B^{-1} g} + \frac{1}{2} \p{c_1 g + c_2 B^{-1} g}^T B \p{c_1 g + c_2 B^{-1} g}
+      \]
+      or
+      \[
+        m(c_1, c_2) = f + \norm{g}^2 c_1 + \norm[B^{-1}]{g}^2 c_2 + \frac{1}{2} \norm[B]{g}^2 c_1^2 + \norm{g}^2 c_1 c_2 + \frac{1}{2} \norm[B^{-1}]{g}^2 c_2^2
+      \]
+      Also we can rewrite the condition $\norm{p}^2 = \Delta^2$ as an expression $g(c_1, c_2) = 0$.
+      \begin{align*}
+        g(c_1, c_2) &= \norm{c_1 g + c_2 B^{-1} g}^2 - \Delta^2 \\
+        &= \p{c_1 g + c_2 B^{-1} g}^T \p{c_1 g + c_2 B^{-1} g} - \Delta^2 \\
+        &= \norm{g}^2 c_1^2 + 2 \norm[B^{-1}]{g}^2 c_1 c_2 + \norm{B^{-1} g}^2 c_2^2 - \Delta^2
+      \end{align*}
+      In order to minimize $m(c_1, c_2)$ subject to the condition
+      $g(c_1, c_2) = 0$, we can first solve for $c_2$ in terms of $c_1$ using
+      $g(c_1, c_2) = 0$ as follows.
+      \begin{align*}
+        0 &= \norm{g}^2 c_1^2 - \Delta^2 + 2 \norm[B^{-1}]{g}^2 c_1 c_2 + \norm{B^{-1} g}^2 c_2^2
+        \intertext{Since this is a quadratic equation in $c_2$}
+        c_2 &= \frac{-2 \norm[B^{-1}]{g}^2 c_1 \pm \sqrt{4 \norm[B^{-1}]{g}^4 c_1^2 - 4\p{\norm{g}^2 c_1^2 - \Delta^2}\p{\norm{B^{-1} g}^2}}}{2\norm{B^{-1} g}^2} \\
+        c_2(c_1) &= \frac{-\norm[B^{-1}]{g}^2 c_1 \pm \sqrt{\norm[B^{-1}]{g}^4 c_1^2 - \p{\norm{g}^2 c_1^2 - \Delta^2}\p{\norm{B^{-1} g}^2}}}{\norm{B^{-1} g}^2}
+      \end{align*}
+      Now $m$ can be written as a one-dimensional equation in $c_1$.
+      \[
+        m(c_1) = f + \norm{g}^2 c_1 + \norm[B^{-1}]{g}^2 c_2(c_1) + \frac{1}{2} \norm[B]{g}^2 c_1^2 + \norm{g}^2 c_1 c_2(c_1) + \frac{1}{2} \norm[B^{-1}]{g}^2 c_2(c_1)^2
+      \]
+      In order to minimize this equation we must solve the equation $\pd{m}{c_1} = 0$.
+      \[
+        \pd{m}{c_1} = \norm{g}^2 + \norm[B^{-1}]{g}^2 c_2'(c_1) + \norm[B]{g}^2 c_1 + \norm{g}^2 \p{c_2(c_1) + c_1 c_2'(c_1)} + \norm[B^{-1}]{g}^2 c_2(c_1) c_2'(c_1)
+      \]
+      Finding the roots of this equation is extremely intensive, so I will just
+      state that $c_1$ needs to be a root of this equation.
+      Then we have already computed $c_2$ in terms of $c_1$, and the minimizer is
+      \[
+        p = c_1 g + c_2 B^{-1}g
+      \]
+
+      %Lagrangian multiplier can be used to minimize $m(c_1, c_2)$ subject to
+      %the condition $g(c_1, c_2) = 0$.
+      %The Lagrangian is
+      %\[
+        %L(c_1, c_2, \lambda) = m(c_1, c_2) + \lambda g(c_1, c_2)
+      %\]
+      %The minimizer and maximizer can be found by solving $\Delta L = 0$.
+      %This is equivalent to the following set of equations.
+      %\begin{align*}
+        %\pd{m}{c_1} + \lambda \pd{g}{c_1} &= 0 \\
+        %\pd{m}{c_2} + \lambda \pd{g}{c_2} &= 0 \\
+        %g(c_1, c_2) &= 0
+      %\end{align*}
+      %or
+      %\begin{align*}
+        %0 &= \norm{g}^2 + \norm[B]{g}^2 c_1 + \norm{g}^2 c_2 + \lambda \p{2 \norm{g}^2 c_1 + 2 \norm[B^{-1}]{g}^2 c_2}\\
+        %0 &= \norm[B^{-1}]{g}^2 + \norm{g}^2 c_1 + \norm[B^{-1}]{g}^2 c_2 + \lambda \p{2 \norm[B^{-1}]{g}^2 c_1+ 2 g^T B^{-1} B^{-1} g c_2}\\
+        %0 &= \norm{g}^2 c_1^2 + 2 \norm[B^{-1}]{g}^2 c_1 c_2 + g^T B^{-1} B^{-1} g c_2^2 - \Delta^2
+      %\end{align*}
     \end{proof}
 
   \item % #2 Done
@@ -70,7 +132,7 @@ Homework 3
     \PYTHON.
     \lstinputlisting[language=Python]{linearConjugateGradient.py}
 
-  \item % #4
+  \item % #4 Done
     Page 133: Problem 5.1. (Use your method from the previous problem). \\
     Implement Algorithm 5.2 and use it to solve linear systems in which $A$
     is the Hilbert matrix, whose elements $A_{i, j} = 1/(i + j - 1)$.
@@ -90,10 +152,10 @@ Homework 3
         \toprule
            n & Number of Iterations \\
         \midrule
-           5 &  \\
-           8 &  \\
-          12 &  \\
-          20 &  \\
+           5 &  6 \\
+           8 & 19 \\
+          12 & 40 \\
+          20 & 75 \\
         \bottomrule
       \end{tabular}
     \end{center}
@@ -134,7 +196,7 @@ Homework 3
       this implies that a set of A-conjugate vectors can be at most of size $n$.
     \end{proof}
 
-  \item % #6
+  \item % #6 Done
     Let $n = N^2$.
     Downlonad the \MATLAB file CreateA.m from the course website.
     The correct syntax for calling this code is
@@ -150,25 +212,33 @@ Homework 3
     How does the number of iterations scale with N?
     What does this tell you about the condition number of $A$ as $N$ varies?
 
-    \lstinputlisting[language=Python]{03_6.py}
+    \lstinputlisting[language=MATLAB]{H03_6.m}
 
     For this problem, I used $b = \br{1, 1, \ldots, 1}^T$ and $x_0 = 0$.
     The error tolerance was $10^{-6}$.
+    The following table shows $N$, the number of iterations required to converge,
+    how the number of iterations scales with $N$, a lower bound for the
+    condition number $\kappa$ of $A$, and the actual condition number $\kappa$.
+    The lower bound for the condition number $\kappa$ is found using the
+    following error condition,
+    \[
+      \norm[A]{x_k - x^*} \le 2\p{\frac{\sqrt{\kappa} - 1}{\sqrt{\kappa} + 1}}^k \norm[A]{x_0 - x^*}.
+    \]
     \begin{center}
-      \begin{tabular}{cc}
+      \begin{tabular}{ccccc}
         \toprule
-        N & number of iterations \\
+        N & number of iterations & scale & $\kappa$ lower bound & $\kappa$\\
         \midrule
-        10 & 15 \\
-        20 & 35 \\
-        40 & 73 \\
-        80 & 149 \\
-        160 & 302 \\
-        320 & \\
+         10 &  15 &    1.5 &   4 & 70  \\
+         20 &  35 &   1.75 &  14 & 258 \\
+         40 &  73 &  1.825 &  53 & 989 \\
+         80 & 149 & 1.8625 & 191 & 3865  \\
+        160 & 302 & 1.8875 & 690 & 15276 \\
+        320 & 607 & 1.8969 &2480 & 60728 \\
         \bottomrule
       \end{tabular}
     \end{center}
-    This sho
-
+    As can be seen the number of iterations is approaching $\approx 1.9 N$.
+    Also it can be seen that the condition number of $A$, grows as $N$ grows.
 \end{enumerate}
 \end{document}
