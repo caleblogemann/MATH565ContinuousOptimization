@@ -16,7 +16,14 @@ Homework 3
     the case where $B$ is positive definite.
 
     \begin{proof}
-      
+      The two-dimensional subspace minimization problem can be stated as
+      \[
+        \min[p]{m(p)} = \min[p]{f + g^T p + \frac{1}{2} p^T B p} \qquad s.t. \norm{p} \le \Delta, p \in \spanspace{g, B^{-1} g}
+      \]
+      If $\norm{B^{-1} g} \le \Delta$, then clearly $p = B^{-1} g$ is the optimal
+      solution to the minimization subproblem.
+      Therefore let $\norm{B^{-1} g} > \Delta$.
+      In this case
     \end{proof}
 
   \item % #2 Done
@@ -46,7 +53,7 @@ Homework 3
         &= \sum{i = 1}{N}{\sum{j = 1}{N}{a_i a_j \p{v_i^T B v_j + \lambda v_i^T v_j}}} \\
         &= \sum{i = 1}{N}{\sum{j = 1}{N}{a_i a_j \p{\mu_j v_i^T v_j + \lambda v_i^T v_j}}}
         \intertext{Since $v_i^T v_j = 0$ for all $i \neq j$}
-        &= \sum{i = 1}{N}{a_i^2 \p{\mu_j v_i^T v_i + \lambda v_i^T v_i}}
+        &= \sum{i = 1}{N}{a_i^2 \p{\mu_j v_i^T v_i + \lambda v_i^T v_i}} \\
         &= \sum{i = 1}{N}{a_i^2 \p{\mu_i \norm{v_i}^2 + \lambda \norm{v_i}^2}} \\
         &= \sum{i = 1}{N}{a_i^2 \p{\mu_i + \lambda}}
         \intertext{Note that $\mu_i + \lambda > 0$ for any eigenvalue $\mu_i$ as
@@ -79,7 +86,7 @@ Homework 3
     The required number of iterations to achieve error less than $10^{-6}$ is
     shown in the table below for different size matrices.
     \begin{center}
-      \begin{tabular}
+      \begin{tabular}{cc}
         \toprule
            n & Number of Iterations \\
         \midrule
@@ -148,7 +155,7 @@ Homework 3
     For this problem, I used $b = \br{1, 1, \ldots, 1}^T$ and $x_0 = 0$.
     The error tolerance was $10^{-6}$.
     \begin{center}
-      \begin{tabular}
+      \begin{tabular}{cc}
         \toprule
         N & number of iterations \\
         \midrule
