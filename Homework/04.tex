@@ -1,0 +1,64 @@
+\documentclass[11pt, oneside]{article}
+\usepackage[letterpaper, margin=2cm]{geometry}
+\usepackage{MATH565}
+
+\begin{document}
+\noindent \textbf{\Large{Caleb Logemann \\
+MATH 565 Continuous Optimization \\
+Homework 4
+}}
+
+%\lstinputlisting[language=Python]{H01_23.m}
+\begin{enumerate}
+  \item % #1
+    Let $\M{A} \in \RR^{n \times n}$ be a symmetric positive definite matrix.
+    \begin{enumerate}
+      \item[(a)]
+        Show that the unit vectors $\v{d}_1, \v{d}_2, \ldots, \v{d}n$ are
+        $\m{A}$-conjugate vectors if and only if $\M{D}^T \M{A} \M{D} = \M{A}$
+        where $\M{D} = \br{\v{d}_1, \v{d}_2, \ldots, \v{d}_n}$.
+
+      \item[(b)]
+        If $\M{Q} \in \RR^{n \times n}$ is an orthogonal matrix
+        $(\M{Q}^T \M{Q} = \M{I})$, $\v{d}_1, \v{d}_2, \ldots, \v{d_n}$ are
+        $\M{A}$-conjugate vectors, and
+        $\M{D} = \br{\v{d}_1, \v{d}_2, \ldots, \v{d}_n}$, show that the columns
+        of $\M{D} \M{Q}$ are also $\M{A}$-conjugate vectors.
+    \end{enumerate}
+
+  \item % #2
+    Page 162: Problem 6.3 \\
+    Verify that (6.19) and (6.17) are inverses of each other.
+
+  \item % #3
+    Page 162: Problem 6.4 \\
+    Use the Sherman Morrison formula (A.27) to show that (6.24) is the inverse
+    of (6.25).
+
+  \item % #4
+    Page 162: Problem 6.6 \\
+    The square root of a matrix $A$ is a matrix $A^{1/2}$ such that
+    $A^{1/2} A^{1/2} = A$.
+    Show that symmetric positive definite matrix $A$ has a square root, and that
+    this square root is itself symmetric and positive definite.
+    % (Hint: Use the factorization A = UDU^T (A.16), where U is orthogonal and D
+    % is diagonal with positive diagonal elements)
+
+  \item % #5
+    Implement the BFGS Method (Algorithm 6.1 on Page 140, or lecture notes).
+
+  \item % #6
+    Apply the BFGS method to the following function:
+    \[
+      f(x, y) = (x^2 + y - 11)^2 + (x + y^2 - 7)^2.
+    \]
+    Use $\M{H}_0 = \M{I}$ and an exact line search for each step length.
+    Do all of the following:
+    \begin{itemize}
+      \item
+      \item
+      \item
+      \item
+    \end{itemize}
+\end{enumerate}
+\end{document}
