@@ -172,21 +172,49 @@ Homework 4
       matrix $A$.
     \end{proof}
 
-  \item % #5
+  \item % #5 Done
     Implement the BFGS Method (Algorithm 6.1 on Page 140, or lecture notes).
 
-  \item % #6
+    The following function implements the BFGS Method.
+    The input of this function allows the specification of different methods
+    for determining alpha.
+    \lstinputlisting[language=Matlab]{BFGS.m}
+
+  \item % #6 Done
     Apply the BFGS method to the following function:
     \[
       f(x, y) = (x^2 + y - 11)^2 + (x + y^2 - 7)^2.
     \]
     Use $\M{H}_0 = \M{I}$ and an exact line search for each step length.
-    Do all of the following:
-    \begin{itemize}
-      \item
-      \item
-      \item
-      \item
-    \end{itemize}
+
+    The following script uses the function from \#5.
+    \lstinputlisting[language=Matlab]{BFGS.m}
+
+    The function produces the following image, which shows 4 paths converging to the
+    four local minima.
+    \begin{center}
+      \includegraphics[scale=.7]{Figures/04_1}
+    \end{center}
+
+    For all of these paths, I used a tolerance of $10^{-5}$.
+    I also used the secant method in order to find the exact $\alpha$ that
+    minimized the line search.
+    I used the same tolerance for the secant method.
+
+    The first initial point was $(1, 1)$. 
+    This path converged to $(3, 2)$ in 7 steps. 
+    The value of $f$ at $(3, 2)$ is $f(3, 2) = 0$.
+
+    The second initial point was $(-2, 5)$.
+    The BFGS method converged in 5 steps to the point $(-2.8051, 3.1313)$,
+    where $f(-2.8051, 3.1313) = 1.0958 \times 10^{-14}$.
+
+    The third initial value was $(-2, -2)$.
+    From this initial value the method converged to $(-3.7793, -3.2832)$ in 6
+    steps, to a function value of $f(-3.7793, -3.2832) = 2.2437\times e^{-15}$.
+
+    The last initial value was $(5, -5)$.
+    This path converged to $(3.5844, -1.8481)$ in 6 steps to a function value
+    of $f(3.5844, -1.8481) = 2.0881 \times 10^{-14}$.
 \end{enumerate}
 \end{document}
