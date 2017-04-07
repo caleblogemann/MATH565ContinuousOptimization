@@ -68,6 +68,30 @@ Homework 4
     Page 162: Problem 6.3 \\
     Verify that (6.19) and (6.17) are inverses of each other.
 
+    \begin{proof}
+      First the formula (6.17) can be written in the form
+      \[
+        H_{k+1} = H_k + UV^T
+      \]
+      as follows.
+      \begin{align*}
+        H_{k+1} &= (I - \rho_k s_k y_k^T) H_k (I - \rho_k y_k s_k^T) + \rho_k s_k s_k^T \\
+        &= (H_k - \rho_k s_k y_k^T H_k)(I - \rho_k y_k s_k^T) + \rho_k s_k s_k^T \\
+        &= H_k - \rho_k H_k y_k s_k^T - \rho_k s_k y_k^T H_k + (\rho_k^2 y_k^T H_k y_k) s_k s_k^T + \rho_k s_k s_k^T \\
+        &= H_k - \rho_k H_k y_k s_k^T - \rho_k s_k y_k^T H_k + (\rho_k^2 y_k^T H_k y_k + \rho_k) s_k s_k^T \\
+        &= H_k + \rho_k \br{-H_k y_k, -s_k, s_k} \br{s_k, H_k y_k, (\rho_k y_k^T H_k y_k + 1) s_k}^T \\
+      \end{align*}
+      Now the Sherman-Morrison-Woodbury formula states that
+      \begin{align*}
+        B_{k+1} = B_k - \rho_k B_k \br{-H_k y_k, -s_k, s_k} (I + \rho_k\br{s_k, H_k y_k, (\rho_k y_k^T H_k y_k + 1) s_k}^T B_k \br{-H_k y_k, -s_k, s_k})^{-1} \\
+        \br{s_k, H_k y_k, (\rho_k y_k^T H_k y_k + 1) s_k}^T B_k \\
+        = B_k - \rho_k \br{-y_k, -B_k s_k, B_k s_k} (I + \rho_k\br{B_k s_k, y_k, (\rho_k y_k^T H_k y_k + 1) B_k s_k}^T \br{-H_k y_k, -s_k, s_k})^{-1} \\
+        \br{B_k s_k, y_k, (\rho_k y_k^T H_k y_k + 1) B_k s_k}^T \\
+        = B_k - \rho_k \br{-y_k, -B_k s_k, B_k s_k} (I + \rho_k \br{B_k s_k, y_k, (\rho_k y_k^T H_k y_k + 1) B_k s_k}^T \br{-H_k y_k, -s_k, s_k})^{-1} \\
+        \br{B_k s_k, y_k, (\rho_k y_k^T H_k y_k + 1) B_k s_k}^T \\
+      \end{align*}
+    \end{proof}
+
   \item % #3 Done
     Page 162: Problem 6.4 \\
     Use the Sherman Morrison formula (A.27) to show that (6.24) is the inverse
