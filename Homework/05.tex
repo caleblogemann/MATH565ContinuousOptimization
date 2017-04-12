@@ -1,0 +1,112 @@
+\documentclass[11pt, oneside]{article}
+\usepackage[letterpaper, margin=2cm]{geometry}
+\usepackage{MATH565}
+
+\begin{document}
+\noindent \textbf{\Large{Caleb Logemann \\
+MATH 565 Continuous Optimization \\
+Homework 5
+}}
+
+%\lstinputlisting[language=Python]{H01_23.m}
+\begin{enumerate}
+  \item % #1
+    Page 269: Problem 10.1 \\
+
+  \item % #2
+    Page 269: Problem 10.5 \\
+
+  \item % #3
+    Consider the underdetermined linear system $Jx = r$, where
+    $J \in \RR^{m \times n}$, $x \in \RR^n$, $r \in \RR^m$, and $m < n$
+    (i.e. there are less equations than unknowns).
+    Assume that the rank of $J$ is $m$ (i.e., it has full rank).
+    There will exist infinitely many solutions.
+    The minimum norm solution of $Jx = r$ is the solution closest to the origin,
+    which may be regarded as the solution of the constrained optimization problem:
+    \[
+      \min*[x \in \RR^n]{\norm{x}^2} \quad \text{subject to} \quad Jx = r.
+    \]
+    \begin{enumerate}
+      \item[(a)]
+        Use the Lagrange multiplier method, derive the solution to this
+        optimization problem:
+        \[
+          x = J^T (J J^T)^{-1} r
+        \]
+
+      \item[(b)]
+        Find the minimum norm solution of the $3 \times 5$ system $Jx = r$,
+        where
+        \[
+          J =
+          \begin{pmatrix}
+            1 & 2 & 0 & 3 & 2 \\
+            -1 & -1 & 4 & 2 & 0 \\
+            3 & -2 & 2 & 1 & 1
+          \end{pmatrix},
+          \quad
+          r =
+          \begin{pmatrix}
+            4 \\
+            1 \\
+            -7
+          \end{pmatrix}.
+        \]
+    \end{enumerate}
+
+  \item % #4
+    An important problem in signal processing amounts to finding parameters
+    $c_1, c_2, \ldots, c_n$ and $\lambda_1, \lambda_2, \ldots, \lambda_n$ such
+    that
+    \[
+      \sum{k=1}{n}{c_k e^{-\lambda_k t}} \approx f(t),
+    \]
+    for a given signal function $f(t)$.
+    One approach for solving this problem is to formulate a nonlinear least
+    squares problems.
+    Let
+    \[
+      x := (x_1, x_2, \ldots, x_{2n}) = (c_1, \ldots, c_n, \lambda_1, \ldots, \lambda_n)
+    \]
+    be the vector of parameters to be determined.
+    Let $s_j = f(t_j)$ be given samples of $f$ for $j = 1,\ldots,2n$ and set
+    \[
+      r_j(x) = \sum{k=1}{n}{c_k e^{-\lambda_k t_j}} - s_j = \sum{k=1}{n}{x_k e^{-x_{n+k}t_j}} - s_j.
+    \]
+    We then obtain the parameters as the solution of the nonlinear least squares
+    problem:
+    \[
+      \min*[x \in \RR^{2n}]{\norm{r(x)}^2}.
+    \]
+    \begin{enumerate}
+      \item[(a)]
+        Find the general expression for $J(x)$.
+
+      \item[(b)]
+        Let $n = 2$, and
+        \[
+          t = (0.0, 0.3, 0.6, 0.9) \quad \text{and} \quad s = (2.700, 1.480, 0.819, 0.458).
+        \]
+        In \MATLAB or \PYTHON, problem a Gauss-Newton iteration scheme for this
+        problem.
+        Apply the scheme the following initial guess:
+        \[
+          x_0 = (1, 1, 1, 2)
+        \]
+        and run until convergence.
+    \end{enumerate}
+
+  \item % #5
+    Page 352: Problem 12.4 \\
+
+  \item % #6
+    Page 353: Problem 12.13 \\
+
+  \item % #7
+    Page 354: Problem 12.18 \\
+
+  \item % #8
+    Page 354: Problem 12.21 \\
+\end{enumerate}
+\end{document}
