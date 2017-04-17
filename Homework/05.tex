@@ -12,9 +12,92 @@ Homework 5
 \begin{enumerate}
   \item % #1
     Page 269: Problem 10.1 \\
+    Let $J$ be an $m \times n$ matrix $m \ge n$.
+    \begin{enumerate}
+      \item[(a)]
+        Show that $J$ has full column rank if and only if $J^T J$ is nonsingular.
+
+        \begin{proof}
+          Suppose that $J$ has full column rank, then $J$ has a full singular
+          value decomposition.
+          That is $J = U \Sigma V^T$, where $U$ is an orthogonal $m \times m$
+          matrix, $V$ is an orthogonal $n \times n$ matrix and $\Sigma$ is a
+          diagonal $m \times n$ matrix.
+          Since $J$ is full column rank this implies that the diagonal of
+          $\Sigma$ is nonzero.
+          Now using this decomposition $J^T J$ can be written as
+          \[
+            J^T J = (U \Sigma V^T)^T (U \Sigma V^T) = V \Sigma^T U^T U \Sigma V^T = V \Sigma^T \Sigma V^T.
+          \]
+          Note that $\Sigma^T \Sigma$ is a $n \times n$ matrix, and it is
+          diagonal as it is the product of diagonal matrices.
+          Also the diagonal of $\Sigma^T \Sigma$ is nonzero, as the diagonal of
+          $\Sigma$ is nonzero.
+          Thus this shows that $J^T J$ can be diagonalized as
+          $V \Sigma^T \Sigma V^T$ and that the eigenvalues are nonzero.
+          Therefore $J^T J$ is nonsingular as the eigenvalues are nonzero.
+
+          Now suppose that $J^T J$ is nonsingular. 
+        \end{proof}
+
+      \item[(b)] % Done
+        Show that $J$ has full column rank if and only if $J^T J$ is positive definite.
+
+        \begin{proof}
+          Suppose that $J^T J$ is positive definite.
+          This implies that the eigenvalues of $J^T J$ are all strictly greater
+          than zero.
+          Since all of the eigenvalues are strictly positive, this implies that
+          $\det(J^T J) > 0$ or equivalently that $J^T J$ is nonsingular.
+          Now by part (a) this implies that $J$ has full column rank.
+
+          Suppose on the other hand $J$ has full column rank.
+          Now by part (a) this implies that $J^T J$ is nonsingular.
+          Since $J^T J$ is nonsingular, the eigenvalues of $J^T J$ are nonzero.
+          As in part (a) it was shown that $J^T J$ could be diagonalized as
+          $V \Sigma^T \Sigma V^T$.
+          Considering the diagonal of $\Sigma^T \Sigma$, we see that the
+          eigenvalues of $J^T J$ are the squares of the singular values of $J$.
+          Since squares are all nonnegative, this shows that the eigenvalues
+          of $J^T J$ are nonnegative.
+          This fact along with the fact that the eigenvalues are nonzero implies
+          that $J^T J$ has only positive eigenvalues or equivalently that $J^T J$
+          is positive definite.
+        \end{proof}
+    \end{enumerate}
 
   \item % #2
     Page 269: Problem 10.5 \\
+    Suppose that each residual function $r_j$ and its gradient are Lipschitz
+    continuous with Lipschitz constant L, that is,
+    \[
+      \abs{r_j(x) - r_j(x^*)} \le L \norm{x - x^*}, \quad \norm{\nabla r_j(x) - \nabla r_j(x^*)} \le L \norm{x - x^*}
+    \]
+    for all $j = 1, 2, \ldots, m$ and all $x, x^* \in D$, where $D$ is a
+    compact subset of $\RR^n$.
+    Assume also that the $r_j$ are bounded on $D$, that is, there exists $M > 0$
+    such that $\abs{r_j(x)} \le M$ for all $j = 1, 2, \ldots, m$ and all
+    $x \in D$.
+    Find Lipschitz constants for the Jacobian $J$ (10.3) and the gradient
+    $\nabla f$ (10.4) over $D$.
+
+    First I will suppose that all norms are the 2-norm or the matrix norm
+    induced by the vector 2-norm.
+    First I will consider the Jacobian.
+    \begin{align*}
+      \norm{J(x) - J(x^*)} &= \sup[\norm{y} = 1]{\norm{(J(x) - J(x^*))y}} \\
+      &= \sup[\norm{y} = 1]{\sqrt{\sum*{j = 1}{m}{\p{(\nabla r_j(x) - \nabla r_j(x^*))^T y}^2}}}
+      \intertext{Using the Cauchy-Schwarz inequality}
+      &\le \sup[\norm{y} = 1]{\sqrt{\sum*{j = 1}{m}{\p{\norm{\nabla r_j(x) - \nabla r_j(x^*)} \norm{y}}^2}}} \\
+      &= \sqrt{\sum*{j = 1}{m}{\norm{\nabla r_j(x) - \nabla r_j(x^*)}^2}}
+      \intertext{Using the Lipschitz continuity of the gradient}
+      &\le \sqrt{\sum*{j = 1}{m}{L^2\norm{x - x^*}^2}} \\
+      &= \sqrt{mL^2\norm{x - x^*}^2} \\
+      &= \sqrt{m}L\norm{x - x^*} \\
+    \end{align*}
+    Therefore a Lipschitz constant for the Jacobian is $\sqrt{m}L$.
+
+    Now I will consider the gradient $\nabla f$.
 
   \item % #3
     Consider the underdetermined linear system $Jx = r$, where
@@ -34,6 +117,34 @@ Homework 5
         \[
           x = J^T (J J^T)^{-1} r
         \]
+
+        \begin{proof}
+          The Lagrange multiplier method states that the solution to this
+          minimization problem satisfies the following equations,
+          \begin{align*}
+            \nabla_x \mcL(x, \lambda) &= 0, \\
+            c_i(x) &= 0, \forall i \in \mcE, \\
+            c_i(x) &\ge 0, \forall i \in \mcI, \\
+            \lambda_i &\ge, \forall i \in \mcI, \\
+            \lambda_i c_i(x) &= 0, \forall i \in \mcE \cup \mcI,
+          \end{align*}
+          where $\mcL$ is the Lagrangian.
+          In this problem the Lagrangian is
+          \[
+            \mcL(x, \lambda) = \norm{x}^2 - \lambda^T (Jx - r).
+          \]
+          There are only equality constraints which are
+          \[
+            Jx - r = 0
+          \]
+          The full set of equations for this problem is thus
+          \begin{align*}
+            \nabla_x (\norm{x}^2 - \lambda^T (Jx - r)) &= 0, \\
+            Jx - r &= 0, \\
+            \lambda^T (Jx - r) &= 0,
+          \end{align*}
+
+        \end{proof}
 
       \item[(b)]
         Find the minimum norm solution of the $3 \times 5$ system $Jx = r$,
@@ -99,14 +210,59 @@ Homework 5
 
   \item % #5
     Page 352: Problem 12.4 \\
+    If $f$ is convex and the feasible region $\Omega$ is convex, show that local
+    solutions of the problem (12.3) are also global solutions.
+    Show that the set of global solutions is convex.
+    (Hint: See Theorem 2.5.)
+
+    \begin{proof}
+      
+    \end{proof}
 
   \item % #6
     Page 353: Problem 12.13 \\
+    Show that for the feasible region defined by
+    \begin{align*}
+      (x_1 - 1)^2 + (x_2 - 1)^2 \le 2, \\
+      (x-1 - 1)^2 + (x_2 + 1)^2 \le 2, \\
+      x_1 \ge 0,
+    \end{align*}
+    the MFCG is satisfied at $x^* = (0, 0)^T$ but the LICQ is not satisfied.
+
+    \begin{proof}
+      
+    \end{proof}
 
   \item % #7
     Page 354: Problem 12.18 \\
+    Consider the problem of finding the point on the parabola
+    $y = \frac{1}{5}(x - 1)^2$ that is closest to $(x, y) = (1, 2)$, in the
+    Euclidean norm sense.
+    We can formulate this problem as
+    \[
+      \min*{f(x, y)} = (x - 1)^2 + (y - 2)^2 \quad \text{subject to } (x - 1)^2 = 5y.
+    \]
+    \begin{enumerate}
+      \item[(a)]
+        Find all the KKT points for this problem.
+        Is the LICQ satisfied?
+
+      \item[(b)]
+        Which of these points are the solutions?
+
+      \item[(c)]
+        By directly substituting the constraint into the object function and
+        eliminating the variable $x$, we obtain an unconstrained optimization
+        problem.
+        Show that the solutions of this problem cannot be solutions of the
+        original problem.
+
+    \end{enumerate}
 
   \item % #8
     Page 354: Problem 12.21 \\
+    Find the maxima of $f(x) = x_1 x_2$ over the unit dist defined by the
+    inequality constraint $1 - x_1^2 - x_2^2 \ge 0$.
+
 \end{enumerate}
 \end{document}
