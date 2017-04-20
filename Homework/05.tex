@@ -194,12 +194,26 @@ Homework 5
       \item[(a)]
         Find the general expression for $J(x)$.
 
+        The i, j entry of the Jacobian is defined as
+        \[
+          J(x)_{ij} = \pd{r_j}{x_i}
+        \]
+        This value can be computed using the following definition of $r_j$ for
+        this problem,
+        \[
+          r_j(x) = \sum{k=1}{n}{c_k e^{-\lambda_k t_j}} - s_j = \sum{k=1}{n}{x_k e^{-x_{n+k}t_j}} - s_j.
+        \]
+        The entries are
+        \begin{align*}
+          J(x)_{ij} &= \pd{r_j}{x_i} \\
+          \pd*{}{x_i}
+        \end{align*}
       \item[(b)]
         Let $n = 2$, and
         \[
           t = (0.0, 0.3, 0.6, 0.9) \quad \text{and} \quad s = (2.700, 1.480, 0.819, 0.458).
         \]
-        In \MATLAB or \PYTHON, problem a Gauss-Newton iteration scheme for this
+        In \MATLAB or \PYTHON, program a Gauss-Newton iteration scheme for this
         problem.
         Apply the scheme the following initial guess:
         \[
