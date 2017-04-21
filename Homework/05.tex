@@ -208,6 +208,7 @@ Homework 5
           J(x)_{ij} &= \pd{r_j}{x_i} \\
           \pd*{}{x_i}
         \end{align*}
+
       \item[(b)]
         Let $n = 2$, and
         \[
@@ -222,7 +223,7 @@ Homework 5
         and run until convergence.
     \end{enumerate}
 
-  \item % #5
+  \item % #5 Done
     Page 352: Problem 12.4 \\
     If $f$ is convex and the feasible region $\Omega$ is convex, show that local
     solutions of the problem (12.3) are also global solutions.
@@ -230,7 +231,24 @@ Homework 5
     (Hint: See Theorem 2.5.)
 
     \begin{proof}
-      
+      Let $f$ be a convex function and let $\Omega$, the feasible region, be
+      convex.
+      Suppose that $x$ is a local minimum of $f$, but not a global minimum
+      This implies that there exists $x^* \Omega$, a global minimum, such that
+      $f(x^*) < f(x)$.
+      Since $\Omega$ is convex this implies that $tx + (1-t)x^* \in \Omega$
+      for all $t \in \br{0, 1}$.
+      Also since $f$ is convex,
+      \begin{align*}
+        f(tx + (1-t)x^*) &\le tf(x) + (1-t)f(x^*) \\
+        &\le tf(x) + (1-t)f(x) \\
+        &= f(x)
+      \end{align*}
+      Now for any local neighborhood, $N$, of $x$, there exists a
+      $t \in \br{0, 1}$ such that $tx + (1-t)x^* \in N$ and
+      $f(tx + (1-t)x^*) < f(x)$.
+      This directly contradicts the fact that $x$ is a local minumum, therefore
+      if $x$ is a local minimum it must also be a global minimum.
     \end{proof}
 
   \item % #6
