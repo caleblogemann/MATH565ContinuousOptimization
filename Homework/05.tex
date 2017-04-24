@@ -264,21 +264,106 @@ Homework 5
       if $x$ is a local minimum it must also be a global minimum.
     \end{proof}
 
-  \item % #6
+  \item % #6 Done
     Page 353: Problem 12.13 \\
     Show that for the feasible region defined by
     \begin{align*}
       (x_1 - 1)^2 + (x_2 - 1)^2 \le 2, \\
-      (x-1 - 1)^2 + (x_2 + 1)^2 \le 2, \\
+      (x_1 - 1)^2 + (x_2 + 1)^2 \le 2, \\
       x_1 \ge 0,
     \end{align*}
     the MFCG is satisfied at $x^* = (0, 0)^T$ but the LICQ is not satisfied.
 
     \begin{proof}
-      
+      First note that $\set{\nabla c_i(x^*), i \in \mcE}$ is empty as there are
+      no equality constraints.
+      Therefore this set is trivially linearly independent.
+
+      Second the MFCQ require the the gradients of the constraints by computed.
+      Let
+      \begin{align*}
+        c_1(x) &= 2 - (x_1-1)^2 - (x_2-1)^2 \\
+        c_2(x) &= 2 - (x_1-1)^2 - (x_2+1)^2 \\
+        c_3(x) &= x_1
+      \end{align*}
+      where $\mcI = \set{1, 2, 3}$ and $\mcE = \varnothing$.
+      Then the gradients of the constraints are
+      \begin{align*}
+        \nabla c_1(x) &=
+        \begin{bmatrix}
+          -2(x_1 - 1) \\
+          -2(x_2 - 1)
+        \end{bmatrix} \\
+        \nabla c_2(x) &=
+        \begin{bmatrix}
+          -2(x_1 - 1) \\
+          -2(x_2 + 1)
+        \end{bmatrix} \\
+        \nabla c_3(x) &=
+        \begin{bmatrix}
+          1 \\
+          0
+        \end{bmatrix}.
+      \end{align*}
+      At the point $x^* = (0, 0)$, these gradients are
+      \begin{align*}
+        \nabla c_1(x^*) &=
+        \begin{bmatrix}
+          2 \\
+          2 
+        \end{bmatrix} \\
+        \nabla c_2(x^*) &=
+        \begin{bmatrix}
+          2 \\
+          -2
+        \end{bmatrix} \\
+        \nabla c_3(x^*) &=
+        \begin{bmatrix}
+          1 \\
+          0
+        \end{bmatrix}.
+      \end{align*}
+
+
+      At the point $x^* = (0, 0)$, all of the inequality constraints are active.
+      Consider the vector $w = \br{1, 0}^T$, then
+      \begin{align*}
+        \nabla c_1(x^*)^T w &=
+        \begin{bmatrix}
+          2 & 2
+        \end{bmatrix}
+        \begin{bmatrix}
+          1 \\
+          0
+        \end{bmatrix} \\
+        &= 2 > 0 \\
+        \nabla c_2(x^*)^T w &=
+        \begin{bmatrix}
+          2 & -2
+        \end{bmatrix}
+        \begin{bmatrix}
+          1 \\
+          0
+        \end{bmatrix} \\
+        &= 2 > 0 \\
+        \nabla c_3(x^*)^T w &=
+        \begin{bmatrix}
+          1 & 0
+        \end{bmatrix}
+        \begin{bmatrix}
+          1 \\
+          0
+        \end{bmatrix} \\
+        &= 1 > 0
+      \end{align*}
+      This shows that these constraints satisfy the MFCQ is satisfied at $x^* = \br{0, 0}^T$.
+
+      Now consider the LICQ, the vectors
+      $\set{\nabla c_i(x^*): i \in \mcA(x^*) \cap \mcI}$ are not linearly
+      independent as the set contains 3 vectors in $\RR^2$.
     \end{proof}
 
-  \item % #7
+  \item % #7 Done
     Page 354: Problem 12.18 \\
     Consider the problem of finding the point on the parabola
     $y = \frac{1}{5}(x - 1)^2$ that is closest to $(x, y) = (1, 2)$, in the
@@ -288,25 +373,160 @@ Homework 5
       \min*{f(x, y)} = (x - 1)^2 + (y - 2)^2 \quad \text{subject to } (x - 1)^2 = 5y.
     \]
     \begin{enumerate}
-      \item[(a)]
+      \item[(a)] % Done
         Find all the KKT points for this problem.
         Is the LICQ satisfied?
 
-      \item[(b)]
+        For this problem the Lagrangian is
+        \[
+          \mcL(x, y, \lambda) = (x - 1)^2 + (y - 2)^2 + \lambda\p{(x - 1)^2 - 5y}.
+        \]
+        The gradient of the Lagrangian is then
+        \[
+          \nabla_{x,y} \mcL(x, y, \lambda) =
+          \begin{bmatrix}
+            (2 + \lambda)(x - 1) \\
+            2(y - 2) - 5\lambda
+          \end{bmatrix}
+        \]
+
+        The KKT conditions are thus
+        \begin{align*}
+          (2 + \lambda)(x - 1) &= 0 \\
+          2(y - 2) - 5\lambda &= 0 \\
+          (x - 1)^2 - 5y &= 0 \\
+          \lambda((x - 1)^2 - 5y) &= 0
+        \end{align*}
+        The last equation is redundant with the third equation.
+        The first three equations can be solved as follows.
+        \begin{align*}
+          y &= \frac{1}{5}(x - 1)^2 \\
+          0 &= 2(y - 2) - 5\lambda \\
+          0 &= 2\p{\frac{1}{5}(x - 1)^2 - 2} - 5\lambda \\
+          5\lambda &=\frac{2}{5}(x - 1)^2 - 4 \\
+          \lambda &= \frac{2}{25}(x - 1)^2 - \frac{4}{5} \\
+          0 &= (2 + \lambda)(x - 1) \\
+          0 &= (2 + \frac{2}{25}(x - 1)^2 - \frac{4}{5})(x - 1) \\
+          0 &= (\frac{2}{25}(x - 1)^2 + \frac{6}{5})(x - 1)
+          \intertext{either}
+          x &= 1
+          \intertext{or}
+          0 &= \frac{2}{25}(x - 1)^2 + \frac{6}{5} \\
+          -\frac{6}{5} &= \frac{2}{25}(x - 1)^2 \\
+          -\frac{6}{5} \frac{25}{2} &= (x - 1)^2 \\
+          -15 &= (x - 1)^2 \\
+          \pm\sqrt{-15} &= x - 1 \\
+          x &= 1\pm i\sqrt{15} \\
+        \end{align*}
+        There are three points which satisfy the KKT conditions.
+        The first is at $x = 1$, and in this case $y = 0$ and
+        $\lambda = -\frac{4}{5}$.
+        The second is at $x = 1 + i\sqrt{15}$, and in this case $y = -3$ and
+        $\lambda = -2$.
+        The third point is $x = 1 - i\sqrt{15}$, and in this case $y = -3$ and
+        $\lambda = -2$.
+
+        In order to see if any of these points satisfy the LICQ, the gradients
+        of the active constraints must be computed.
+        Since there is only one constraint and it is active for all points
+        satsifying the KKT conditions, the set containing this vector is
+        linearly independent.
+        Note that this gradient is nonzero at this point as the $y$ derivative
+        is $-5$.
+
+      \item[(b)] % Done
         Which of these points are the solutions?
 
-      \item[(c)]
+        Plugging these points into the objective function allows us to find the
+        solutions to the minimization problem.
+        At the point $(x, y) = (1, 0)$, the objective function is $f(1, 0) = 16$.
+        At the points $(1 + i\sqrt{15}, -3)$ and $(1 - i\sqrt{15}, -3)$ the
+        objective function is $f = 10$.
+        However since the second and third points are not real valued, the
+        solution is the point $(x, y) = (1, 0)$.
+
+      \item[(c)] % Done
         By directly substituting the constraint into the object function and
         eliminating the variable $x$, we obtain an unconstrained optimization
         problem.
         Show that the solutions of this problem cannot be solutions of the
         original problem.
+
+        In order to substitute and elimination the variable $x$ we need to first
+        solve the constraint for $x$.
+        \begin{align*}
+          (x - 1)^2 &= 5y \\
+          x - 1 &= \pm\sqrt{5y} \\
+          x &= \pm\sqrt{5y} + 1 \\
+        \end{align*}
+        Thus the problem can now be expressed as
+        \[
+          \min[y \in \RR]{(\pm\sqrt{5y} + 1 - 1)^2 + (y - 2)^2}
+        \]
+        This minimum can be found using basic calculus techniques.
+        \begin{align*}
+          f(y) &= (\pm\sqrt{5y} + 1 - 1)^2 + (y - 2)^2 \\
+          &= 5y + (y - 2)^2 \\
+          &= y^2 + y - 4 \\
+          f'(y) &= 2y + 1 \\
+          f'(y) &= 0 \\
+          y &= -\frac{1}{2}
+          f''(y) &= 2
+        \end{align*}
+        This shows that the minimum of $f$ is at $y = -\frac{1}{2}$.
+        This is in fact a minumum as $f''(-\frac{1}{2}) > 0$.
+
+        This can't be a solution because at $y = -1/2$, then
+        $x = \pm i \sqrt{\frac{5}{2}} + 1$ which is not real valued.
     \end{enumerate}
 
   \item % #8
     Page 354: Problem 12.21 \\
     Find the maxima of $f(x) = x_1 x_2$ over the unit disk defined by the
     inequality constraint $1 - x_1^2 - x_2^2 \ge 0$.
+
+    This problem can be written as the following minimization problem.
+    \[
+      \min{-x_1 x_2} \text{ subject to } 1 - x_1^2 - x_2^2 \ge 0
+    \]
+
+    The Lagrangian for this problem is thus
+    \[
+      \mcL(x_1, x_2, \lambda) = -x_1 x_2 + \lambda (1 - x_1^2 - x_2^2).
+    \]
+    The KKT conditions are now
+    \begin{align*}
+      -x_2 - 2\lambda x_1 &= 0 \\
+      -x_1 - 2\lambda x_2 &= 0 \\
+      1 - x_1^2 - x_2^2 &\ge 0 \\
+      \lambda &\ge 0 \\
+      \lambda (1 - x_1^2 - x_2^2) &= 0
+    \end{align*}
+    These can be solved as follows.
+    \begin{align*}
+      0 &= -x_2 - 2\lambda x_1 \\
+      x_2 &= -2\lambda x_1 \\
+      0 &= -x_1 - 2\lambda x_2 \\
+      0 &= -x_1 - 2\lambda (-2\lambda x_1) \\
+      0 &= -x_1 + 4\lambda^2 x_1 \\
+      0 &= (4\lambda^2 - 1) x_1 \\
+    \end{align*}
+    This shows that either $x_1 = 0$ or $4\lambda^2 - 1 = 0$, which can be
+    simplified as
+    \begin{align*}
+      0 &= 4\lambda^2 - 1 \\
+      1 &= 4\lambda^2 \\
+      \frac{1}{4} &= \lambda^2 \\
+      \lambda &= \pm \frac{1}{2}
+    \end{align*}
+    Since $\lambda \ge 0$ this implies that $\lambda = \frac{1}{2}$, and also
+    that $x_2 = -x_1$
+    Now since $\lambda \neq 0$, the last KKT condition implies that
+    \begin{align*}
+      0 &= 1 - x_1^2 - x_2^2 \\
+      0 &= 1 - x_1^2 - \p{-x_1}^2 \\
+    \end{align*}
+
 
 \end{enumerate}
 \end{document}
