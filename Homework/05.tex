@@ -206,8 +206,22 @@ Homework 5
         The entries are
         \begin{align*}
           J(x)_{ij} &= \pd{r_j}{x_i} \\
-          \pd*{}{x_i}
+          \pd*{\sum{k=1}{n}{x_k e^{-x_{n+k}t_j}} - s_j}{x_i}
+          \intertext{If $i \le n$, then there exists $k = i$, so}
+          J(x)_{ij} &= e^{-x_{n+i}t_j}
+          \intertext{If $i > n$, then there exists $k$ such that $i = n+k$, so}
+          J(x)_{ij} &= -t_j x_{i-n} e^{-x_i t_j}
         \end{align*}
+        Thus the general definition of the Jacobian by entry is
+        \[
+          J(x)_{ij} =
+          \begin{cases}
+            e^{-x_{n+i}t_j} & i \le n \\
+            -t_j x_{i-n} e^{-x_i t_j} & i > n
+          \end{cases}
+        \]
+        where $i, j = 1, 2, \ldots, 2n$.
+
       \item[(b)]
         Let $n = 2$, and
         \[
@@ -220,6 +234,8 @@ Homework 5
           x_0 = (1, 1, 1, 2)
         \]
         and run until convergence.
+
+
     \end{enumerate}
 
   \item % #5
@@ -270,12 +286,11 @@ Homework 5
         problem.
         Show that the solutions of this problem cannot be solutions of the
         original problem.
-
     \end{enumerate}
 
   \item % #8
     Page 354: Problem 12.21 \\
-    Find the maxima of $f(x) = x_1 x_2$ over the unit dist defined by the
+    Find the maxima of $f(x) = x_1 x_2$ over the unit disk defined by the
     inequality constraint $1 - x_1^2 - x_2^2 \ge 0$.
 
 \end{enumerate}
