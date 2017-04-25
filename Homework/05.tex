@@ -10,11 +10,11 @@ Homework 5
 
 %\lstinputlisting[language=Python]{H01_23.m}
 \begin{enumerate}
-  \item % #1
+  \item % #1 Done
     Page 269: Problem 10.1 \\
     Let $J$ be an $m \times n$ matrix $m \ge n$.
     \begin{enumerate}
-      \item[(a)]
+      \item[(a)] % Done
         Show that $J$ has full column rank if and only if $J^T J$ is nonsingular.
 
         \begin{proof}
@@ -37,7 +37,19 @@ Homework 5
           $V \Sigma^T \Sigma V^T$ and that the eigenvalues are nonzero.
           Therefore $J^T J$ is nonsingular as the eigenvalues are nonzero.
 
-          Now suppose that $J^T J$ is nonsingular. 
+          Now suppose that $J^T J$ is nonsingular.
+          If $J$ has full column rank, then the equation $Jx = 0$ will only
+          have the trivial solution.
+          Suppose to the contrary that there exists $x \in \RR^n$ such that
+          $Jx = 0$ and $x \neq 0$.
+          Multiplying both sides of this equation $J^T$ we see that this
+          indicates that $J^T J x = 0$.
+          However $J^T J$ is nonsingular and so is invertible, which implies
+          that
+          \[
+            x = (J^T J)^{-1} 0 = 0.
+          \]
+          This is a contradiction, therefore $J$ must have full column rank.
         \end{proof}
 
       \item[(b)] % Done
@@ -66,7 +78,7 @@ Homework 5
         \end{proof}
     \end{enumerate}
 
-  \item % #2
+  \item % #2 Done
     Page 269: Problem 10.5 \\
     Suppose that each residual function $r_j$ and its gradient are Lipschitz
     continuous with Lipschitz constant L, that is,
@@ -98,6 +110,27 @@ Homework 5
     Therefore a Lipschitz constant for the Jacobian is $\sqrt{m}L$.
 
     Now I will consider the gradient $\nabla f$.
+    \begin{align*}
+      \norm{\nabla f(x) - \nabla f(x^*)} &= \norm{J(x)^T r(x) - J(x^*)^T r(x^*)} \\
+      &= \norm{J(x)^T r(x) - J(x^*)^T r(x) + J(x^*)^T r(x) - J(x^*)^T r(x^*)} \\
+      &= \norm{(J(x) - J(x^*))^T r(x) + J(x^*)^T (r(x) - r(x^*))} \\
+      &\le \norm{(J(x) - J(x^*))^T r(x)} + \norm{J(x^*)^T (r(x) - r(x^*))} \\
+      &\le \norm{J(x) - J(x^*)} \norm{r(x)} + \norm{J(x^*)} \norm{r(x) - r(x^*)} \\
+      &\le \sqrt{m}L \norm{x - x^*} \norm{r(x)} + L \norm{J(x^*)} \norm{x - x^*}
+    \end{align*}
+    Since $r_j$ is bounded on a compact set $D$, $\norm{r(x)}$ achieves
+    its maximum on $D$.
+    Let $A = \max[x \in D]{\norm{r(x)}}$.
+    Also we have shown that the Jacobian is bounded and Lipschitz
+    continuous on the compact set $D$, so there exists
+    $B = \max[x \in D]{\norm{J(x)}}$.
+    Now we can see that
+    \begin{align*}
+      \norm{\nabla f(x) - \nabla f(x^*)} &\le \sqrt{m}L A\norm{x - x^*} + L B \norm{x - x^*} \\
+      &= \p{\sqrt{m} A + B} L \norm{x - x^*}
+    \end{align*}
+    This shows that the Lipschitz constant for $\nabla f$ is
+    $\p{\sqrt{m} A + B} L$.
 
   \item % #3 Done
     Consider the underdetermined linear system $Jx = r$, where
