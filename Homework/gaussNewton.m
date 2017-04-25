@@ -9,14 +9,14 @@ function [x, k] = gaussNewton(x0, J, r, TOL, MaxIter)
     mstop = 1;
 
     rx = r(x(:,k));
-    Jx = J(x(:,k))
+    Jx = J(x(:,k));
     while k <= MaxIter && mstop
         p = -(Jx'*Jx)\(Jx'*rx);
         x(:,k+1) = x(:,k) + p;
 
         k = k+1;
         rx = r(x(:,k));
-        if norm(rx) < TOL && norm(p)
+        if norm(p) < TOL
             mstop = 0;
         else
             Jx = J(x(:,k));
