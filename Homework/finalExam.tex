@@ -105,7 +105,7 @@ Final Exam
           \]
         \end{proof}
     \end{enumerate}
-    
+
   \item % #2
     \begin{enumerate}
       \item[(a)] % Done
@@ -221,9 +221,44 @@ Final Exam
           This implies that $\lambda_j = 0$, so that $\lambda_j x_j = 0$.
           Consider the equation for the $j$th entry of the Lagrangian.
           \[
-            test
+            \sum{k \neq j}{}{x_k} + 2x_j + r_j - a + \lambda_j = 0
           \]
-
+          This can be solved for $x_j$ also noticing that $\lambda_j = 0$
+          \[
+            x_j = \frac{a - r_j - \sum{k \neq j}{}{x_k}}{2}
+          \]
+          Since $x_j > 0$ this implies that
+          \[
+            a > r_j + \sum{k \neq j}{}{x_k}.
+          \]
+          Also since $r_j > r_i$,
+          \[
+            a > r_i + \sum{k \neq j}{}{x_k}.
+          \]
+          Now consider the $i$th equation for Lagrangian condition.
+          \[
+            \sum{k \neq i}{}{x_k} + 2x_i + r_i - a - \lambda_i = 0.
+          \]
+          Since $x_i = 0$ this can be solved for $\lambda_i$.
+          \[
+            \lambda_i = \sum{k \neq i}{}{x_k} + r_i - a.
+          \]
+          The value of $x_j$ can be pulled out of the sum, and the value can be
+          replaced using the equation found earlier.
+          \[
+            \lambda_i = \frac{a - r_j - \sum{k \neq j}{}{x_k}}{2} + \sum{k \neq i, k \neq j}{}{x_k} + r_i - a
+          \]
+          Since $x_i = 0$ these two sums are equivalent, and this expression
+          can be simplified.
+          \begin{align*}
+            \lambda_i &= \frac{a - r_j - \sum{k \neq j}{}{x_k}}{2} + \sum{k \neq i, k \neq j}{}{x_k} + r_i - a \\
+            \lambda_i &= \frac{a - r_j - \sum{k \neq j}{}{x_k} + 2\sum{k \neq i, k \neq j}{}{x_k} + 2r_i - 2a }{2} \\
+            \lambda_i &= \frac{r_i - r_j + \sum{k \neq j}{}{x_k} + r_i - a}{2} \\
+          \end{align*}
+          Since $r_i < r_j$ and $a > \sum{k \neq j}{}{x_k} + r_i$ this implies
+          that $\lambda_i < 0$, which is a contradiction.
+          Therefore this shows that $x_j = 0$.
+          Hence if $x_i = 0$, then $x_j = 0$ for all $j > i$.
         \end{proof}
 
       \item[(d)] % Done
